@@ -20,7 +20,6 @@
 
     <div class="gradient"></div>
 
-    <!-- DESKTOP ICONS -->
 
     <div class="desktop-icons">
 
@@ -34,17 +33,17 @@
             <span>Winamp</span>
         </div>
 
-        <div class="desktop-icon photos">
+        <div class="desktop-icon photos" onclick="openPhotos()">
             <img src="photos.png">
             <span>Photos</span>
         </div>
 
-        <div class="desktop-icon saves">
+        <div class="desktop-icon saves" onclick="openSaves()">
             <img src="saves.png">
             <span>Saves</span>
         </div>
 
-        <div class="desktop-icon internet">
+        <div class="desktop-icon internet" onclick="openInternet()">
             <img src="internet.png">
             <span>Internet</span>
         </div>
@@ -56,8 +55,6 @@
 
     </div>
 
-    <!-- TASKBAR -->
-
     <div class="taskbar">
 
         <div class="start-button" onclick="startParty()">
@@ -66,12 +63,11 @@
         </div>
 
         <div class="date">
-            12-Aug-2026&nbsp;&nbsp;03:45 PM
+            12-Aug-1996&nbsp;&nbsp;03:45 PM
         </div>
 
     </div>
 
-    <!-- START WINDOW -->
 
     <div class="party-window" id="partyWindow">
 
@@ -89,7 +85,38 @@
 
     </div>
 
-    <!-- RECYCLE BIN -->
+    <div class="photos-window" id="photosWindow">
+
+        <div class="photos-title">
+            Photos
+        </div>
+
+
+        <div class="photo-viewer">
+
+            <img id="currentPhoto" src="chess.png">
+
+        </div>
+
+
+        <div class="photo-controls">
+
+            <button onclick="nextPhoto()">
+                ◀
+            </button>
+
+            <button onclick="prevPhoto()">
+                ▶
+            </button>
+
+            <button onclick="closePhotos()">
+                Close
+            </button>
+
+        </div>
+
+    </div>
+
 
     <div class="recycle-window" id="recycleWindow">
 
@@ -122,7 +149,48 @@
         </div>
 
         <button onclick="closeRecycle()">
-            OK
+            Close
+        </button>
+
+    </div>
+
+    <div class="saves-window" id="savesWindow">
+
+        <div class="saves-title">
+            Saves
+        </div>
+
+
+        <div class="saves-content">
+
+            <div class="file-header">
+                <span>Name</span>
+                <span>Size</span>
+            </div>
+
+
+            <div class="file-row">
+                <span>save1.dat</span>
+                <span>512 KB</span>
+            </div>
+
+
+            <div class="file-row">
+                <span>save2.dat</span>
+                <span>768 KB</span>
+            </div>
+
+
+            <div class="file-row">
+                <span>birthday.sav</span>
+                <span>4.2 MB</span>
+            </div>
+
+        </div>
+
+
+        <button onclick="closeSaves()">
+            Close
         </button>
 
     </div>
@@ -145,6 +213,77 @@ function openRecycle() {
 
 function closeRecycle() {
     document.getElementById("recycleWindow").style.display = "none";
+}
+
+function openInternet() {
+    window.open(
+        "https://www.google.com/search?q=how+to+stop+aging",
+        "_blank"
+    );
+}
+
+function openSaves(){
+    document.getElementById("savesWindow").style.display = "flex";
+}
+
+
+function closeSaves(){
+    document.getElementById("savesWindow").style.display = "none";
+}
+
+let photos = [
+    "chess.png",
+    "radio.png",
+    "video_games.png",
+    "bday.png",
+    "fish.png"
+];
+
+let currentPhotoIndex = 0;
+
+
+function openPhotos(){
+
+    document.getElementById("photosWindow").style.display="flex";
+
+}
+
+
+function closePhotos(){
+
+    document.getElementById("photosWindow").style.display="none";
+
+}
+
+
+function nextPhoto(){
+
+    currentPhotoIndex++;
+
+    if(currentPhotoIndex >= photos.length){
+
+        currentPhotoIndex = 0;
+
+    }
+
+    document.getElementById("currentPhoto").src =
+    photos[currentPhotoIndex];
+
+}
+
+function prevPhoto(){
+
+    currentPhotoIndex--;
+
+    if(currentPhotoIndex < 0){
+
+        currentPhotoIndex = photos.length - 1;
+
+    }
+
+    document.getElementById("currentPhoto").src =
+        photos[currentPhotoIndex];
+
 }
 
 </script>

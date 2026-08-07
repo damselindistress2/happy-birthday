@@ -262,3 +262,124 @@ body{
     border-right:2px solid #aeb8ee;
     border-bottom:2px solid #aeb8ee;
 }
+
+
+.saves-window{
+    display:none;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    width:730px;
+    min-height:400px;
+    background:#6D7ABD;
+    border-top:2px solid #aeb8ee;
+    border-left:2px solid #aeb8ee;
+    border-right:2px solid #3f4975;
+    border-bottom:2px solid #3f4975;
+    box-shadow:4px 4px 12px rgba(0,0,0,.35);
+    color:white;
+    flex-direction:column;
+}
+
+
+.saves-title{
+    padding:6px 8px;
+    background:rgba(15,35,120,.35);
+    font-family:"Silkscreen", sans-serif;
+    font-size:13px;
+}
+
+
+.saves-content{
+    padding:25px;
+    font-family:"VT323", monospace;
+    font-size:26px;
+}
+
+
+.saves-window button{
+    display:block;
+    margin:auto auto 20px;
+    width:80px;
+    height:28px;
+    background:#6D7ABD;
+    color:white;
+    font-family:"VT323", monospace;
+    font-size:18px;
+    border-top:2px solid #aeb8ee;
+    border-left:2px solid #aeb8ee;
+    border-right:2px solid #3f4975;
+    border-bottom:2px solid #3f4975;
+    cursor:pointer;
+}
+
+
+.saves-window button:active{
+    transform:translate(2px,2px);
+}
+
+
+.photos-window{
+    display:none;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    width:600px;
+    min-height:450px;
+    background:#6D7ABD;
+    border-top:2px solid #aeb8ee;
+    border-left:2px solid #aeb8ee;
+    border-right:2px solid #3f4975;
+    border-bottom:2px solid #3f4975;
+    box-shadow:4px 4px 12px rgba(0,0,0,.35);
+    color:white;
+    flex-direction:column;
+}
+
+
+.photos-title{
+    padding:6px 8px;
+    background:rgba(15,35,120,.35);
+    font-family:"Silkscreen", sans-serif;
+    font-size:13px;
+}
+
+
+.photo-viewer{
+    flex:1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+}
+
+
+.photo-viewer img{
+    max-width:520px;
+    max-height:320px;
+    object-fit:contain;
+}
+
+
+.photo-controls{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    padding:15px;
+}
+
+
+.photos-window button{
+    width:70px;
+    height:28px;
+    background:#6D7ABD;
+    color:white;
+    font-family:"VT323", monospace;
+    font-size:18px;
+    border-top:2px solid #aeb8ee;
+    border-left:2px solid #aeb8ee;
+    border-right:2px solid #3f4975;
+    border-bottom:2px solid #3f4975;
+}
