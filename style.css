@@ -98,6 +98,20 @@ body {
     box-sizing: border-box;
 }
 
+.start-button:active {
+
+    transform: translate(2px, 2px);
+
+    border-top: 2px solid #3f4975;
+    border-left: 2px solid #3f4975;
+
+    border-right: 2px solid #aeb8ee;
+    border-bottom: 2px solid #aeb8ee;
+
+    box-shadow: inset 1px 1px rgba(0,0,0,0.2);
+
+}
+
 
 .start-button {
     height: 32px;
@@ -133,4 +147,108 @@ body {
     padding: 0 10px;
     margin-right: 8px;
     text-shadow: 1px 1px #4d598f;
+}
+
+/* START POPUP */
+
+.party-window {
+
+    display: none;
+
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    width: 300px;
+
+    background: #6D7ABD;
+
+    border-top: 2px solid #aeb8ee;
+    border-left: 2px solid #aeb8ee;
+
+    border-right: 2px solid #3f4975;
+    border-bottom: 2px solid #3f4975;
+
+    padding: 5px;
+
+    z-index: 20;
+
+    font-family: "VT323", monospace;
+
+    color: white;
+
+}
+
+
+.party-title {
+
+    background: rgba(15,35,120,0.35);
+
+    color: white;
+
+    padding: 5px;
+
+    font-family: "Silkscreen", monospace;
+
+    font-size: 13px;
+
+}
+
+
+.party-message {
+
+    padding: 25px 10px;
+
+    text-align: center;
+
+    font-size: 24px;
+
+    text-shadow:
+        1px 1px #4d598f;
+
+}
+
+
+.party-window button {
+
+    display: block;
+
+    margin: 0 auto 10px;
+
+    width: 70px;
+
+    height: 28px;
+
+    background: #6D7ABD;
+
+    color: white;
+
+    font-family: "VT323", monospace;
+
+    font-size: 18px;
+
+
+    border-top: 2px solid #aeb8ee;
+    border-left: 2px solid #aeb8ee;
+
+    border-right: 2px solid #3f4975;
+    border-bottom: 2px solid #3f4975;
+
+}
+
+.party-window button:active {
+
+    transform: translate(2px, 2px);
+
+    border-top: 2px solid #3f4975;
+    border-left: 2px solid #3f4975;
+
+    border-right: 2px solid #aeb8ee;
+    border-bottom: 2px solid #aeb8ee;
+
+    box-shadow: inset 1px 1px rgba(0,0,0,0.2);
+
 }

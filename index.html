@@ -46,7 +46,7 @@
 
     <div class="taskbar">
 
-        <div class="start-button">
+        <div class="start-button" onclick="startParty()">
             <img src="cloud.png">
             <span>START</span>
         </div>
@@ -56,6 +56,39 @@
         </div>
     </div>
 </div>
+
+<div class="party-window" id="partyWindow">
+
+    <div class="party-title">
+        Start
+    </div>
+
+    <div class="party-message">
+        Let's get this party started! 🎉
+    </div>
+
+    <button onclick="closeParty()">
+        OK
+    </button>
+
+</div>
+
+<script>
+
+function startParty() {
+
+    document.getElementById("partyWindow").style.display = "block";
+
+}
+
+
+function closeParty() {
+
+    document.getElementById("partyWindow").style.display = "none";
+
+}
+
+</script>
 
 </body>
 
