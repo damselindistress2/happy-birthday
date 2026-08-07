@@ -1,17 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Birthday Desktop</title>
+
     <link href="https://fonts.googleapis.com/css2?family=VT323&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
+
 </head>
 
-
 <body>
+
 <div class="desktop">
+
     <div class="gradient"></div>
+
+    <!-- DESKTOP ICONS -->
+
     <div class="desktop-icons">
+
         <div class="desktop-icon folder">
             <img src="folder.png">
             <span>Birthday</span>
@@ -20,11 +32,6 @@
         <div class="desktop-icon winamp">
             <img src="win.png">
             <span>Winamp</span>
-        </div>
-
-        <div class="desktop-icon recycle">
-            <img src="bin.png">
-            <span>Recycle Bin</span>
         </div>
 
         <div class="desktop-icon photos">
@@ -42,7 +49,14 @@
             <span>Internet</span>
         </div>
 
+        <div class="desktop-icon recycle" onclick="openRecycle()">
+            <img src="bin.png">
+            <span>Recycle Bin</span>
+        </div>
+
     </div>
+
+    <!-- TASKBAR -->
 
     <div class="taskbar">
 
@@ -52,40 +66,85 @@
         </div>
 
         <div class="date">
-            12-Aug-2026 03:45 PM
+            12-Aug-2026&nbsp;&nbsp;03:45 PM
         </div>
-    </div>
-</div>
 
-<div class="party-window" id="partyWindow">
-
-    <div class="party-title">
-        Start
     </div>
 
-    <div class="party-message">
-        Let's get this party started! 🎉
+    <!-- START WINDOW -->
+
+    <div class="party-window" id="partyWindow">
+
+        <div class="party-title">
+            Start
+        </div>
+
+        <div class="party-message">
+            Let's get this party started! 🎉
+        </div>
+
+        <button onclick="closeParty()">
+            OK
+        </button>
+
     </div>
 
-    <button onclick="closeParty()">
-        OK
-    </button>
+    <!-- RECYCLE BIN -->
+
+    <div class="recycle-window" id="recycleWindow">
+
+        <div class="recycle-title">
+            Recycle Bin
+        </div>
+
+        <div class="recycle-content">
+
+            <div class="file-header">
+                <span>Name</span>
+                <span>Size</span>
+            </div>
+
+            <div class="file-row">
+                <span>bad_jokes.zip</span>
+                <span>999 KB</span>
+            </div>
+
+            <div class="file-row">
+                <span>embarrassing_photos.zip</span>
+                <span>2.4 MB</span>
+            </div>
+
+            <div class="file-row">
+                <span>taxes_final_FINAL2.doc</span>
+                <span>12 KB</span>
+            </div>
+
+        </div>
+
+        <button onclick="closeRecycle()">
+            OK
+        </button>
+
+    </div>
 
 </div>
 
 <script>
 
 function startParty() {
-
     document.getElementById("partyWindow").style.display = "block";
-
 }
 
-
 function closeParty() {
-
     document.getElementById("partyWindow").style.display = "none";
+}
 
+function openRecycle() {
+    document.getElementById("recycleWindow").style.display = "flex";
+}
+
+function closeRecycle() {
+    document.getElementById("recycleWindow").style.display = "none";
 }
 
 </script>
