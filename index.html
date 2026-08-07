@@ -28,7 +28,7 @@
             <span>Birthday</span>
         </div>
 
-        <div class="desktop-icon winamp">
+        <div class="desktop-icon winamp" onclick="openWinamp()">
             <img src="win.png">
             <span>Winamp</span>
         </div>
@@ -82,6 +82,83 @@
         <button onclick="closeParty()">
             OK
         </button>
+
+    </div>
+
+    <div class="winamp-window" id="winampWindow">
+
+        <div class="winamp-title">
+            Winamp
+        </div>
+
+        <div class="winamp-player">
+
+            <div class="winamp-screen">
+
+                <div class="winamp-now-playing">
+                    NOW PLAYING
+                </div>
+
+                <div class="winamp-song">
+                    NEVER GONNA GIVE YOU UP
+                </div>
+
+                <div class="winamp-artist">
+                    RICK ASTLEY
+                </div>
+
+                <div class="winamp-progress">
+
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                    </div>
+
+                    <div class="time">
+                        <span>01:05</span>
+                        <span>03:32</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="winamp-controls">
+
+                <button>|◀</button>
+                <button>⏸</button>
+                <button class="play-button" onclick="openSpotify()">▶</button>
+                <button>■</button>
+                <button>▶|</button>
+
+            </div>
+
+
+            <div class="winamp-volume">
+
+                <span>VOL</span>
+
+                <div class="volume-bar">
+                    <div class="volume-fill"></div>
+                </div>
+
+            </div>
+
+
+            <div class="winamp-status">
+
+                <span class="status-light"></span>
+
+                READY
+
+            </div>
+
+
+            <button class="winamp-close" onclick="closeWinamp()">
+                Close
+            </button>
+
+        </div>
 
     </div>
 
@@ -236,6 +313,7 @@ let photos = [
     "radio.png",
     "video_games.png",
     "bday.png",
+    "baklava.png",
     "fish.png"
 ];
 
@@ -290,6 +368,28 @@ function prevPhoto(){
 
 }
 
+function openWinamp() {
+
+    document.getElementById("winampWindow").style.display = "flex";
+
+}
+
+
+function closeWinamp() {
+
+    document.getElementById("winampWindow").style.display = "none";
+
+}
+
+
+function openSpotify() {
+
+    window.open(
+        "https://open.spotify.com/track/4cOdK2wGLETKBW3PvgPWqT",
+        "_blank"
+    );
+
+}
 </script>
 
 </body>
