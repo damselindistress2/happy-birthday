@@ -101,11 +101,11 @@
 
         <div class="photo-controls">
 
-            <button onclick="nextPhoto()">
+            <button onclick="prevPhoto()">
                 ◀
             </button>
 
-            <button onclick="prevPhoto()">
+            <button onclick="nextPhoto()">
                 ▶
             </button>
 
@@ -242,10 +242,14 @@ let photos = [
 let currentPhotoIndex = 0;
 
 
-function openPhotos(){
+function openPhotos() {
 
-    document.getElementById("photosWindow").style.display="flex";
+    currentPhotoIndex = 0;
 
+    document.getElementById("currentPhoto").src =
+        photos[currentPhotoIndex];
+
+    document.getElementById("photosWindow").style.display = "flex";
 }
 
 
