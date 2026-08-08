@@ -95,7 +95,7 @@
                 <span>4 KB</span>
             </div>
 
-            <div class="file-row">
+            <div class="file-row" onclick="openMemories()">
                 <span>memories.bmp</span>
                 <span>2.8 MB</span>
             </div>
@@ -496,6 +496,259 @@
 
     </div>
 
+    <div class="memories-window" id="memoriesWindow">
+
+        <div class="memories-title">
+            memories.bmp
+        </div>
+
+        <div class="memories-content">
+
+            <img src="baby.png" alt="Memory">
+
+            <div class="memories-caption">
+                You used to look younger.
+            </div>
+
+            <div class="memories-date">
+                -1996-
+            </div>
+
+        </div>
+
+        <button onclick="closeMemories()">
+            Close
+        </button>
+
+    </div>
+
+    <div class="mail-window" id="mailWindow">
+
+        <div class="mail-title">
+            Mail
+        </div>
+
+
+        <div class="mail-toolbar">
+
+            <button>
+                Write
+            </button>
+
+            <button>
+                Check Mail
+            </button>
+
+            <button>
+                Reply
+            </button>
+
+            <button>
+                Forward
+            </button>
+
+            <button>
+                Delete
+            </button>
+
+            <div class="mail-search">
+
+                <input
+                    type="text"
+                    id="mailSearch"
+                    placeholder="Search"
+                >
+
+                <button>
+                    Find
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="mail-main">
+
+            <!-- FOLDERS -->
+
+            <div class="mail-folders">
+
+                <div class="folders-title">
+                    Folders
+                </div>
+
+                <div class="mail-folder active">
+                    Inbox (4)
+                </div>
+
+                <div class="mail-folder">
+                    Sent
+                </div>
+
+                <div class="mail-folder">
+                    Drafts
+                </div>
+
+                <div class="mail-folder">
+                    Trash
+                </div>
+
+            </div>
+
+
+            <!-- MESSAGE LIST -->
+
+            <div class="mail-right">
+
+                <div class="mail-list">
+
+                    <div class="mail-list-header">
+
+                        <span>From</span>
+                        <span>Subject</span>
+                        <span>Received</span>
+
+                    </div>
+
+
+                    <div
+                        class="mail-row"
+                        onclick="openMailMessage(0)"
+                        data-search="laurel birthday plans"
+                    >
+
+                        <span>Laurel</span>
+                        <span>RE: Birthday plans</span>
+                        <span>8/11</span>
+
+                    </div>
+
+
+                    <div
+                        class="mail-row"
+                        onclick="openMailMessage(1)"
+                        data-search="you dont forget"
+                    >
+
+                        <span>You</span>
+                        <span>Don't forget...</span>
+                        <span>8/10</span>
+
+                    </div>
+
+
+                    <div
+                        class="mail-row spam"
+                        onclick="openMailMessage(2)"
+                        data-search="mp3 world congratulations won"
+                    >
+
+                        <span>MP3 World</span>
+                        <span>CONGRATULATIONS! YOU'VE WON!</span>
+                        <span>8/09</span>
+
+                    </div>
+
+
+                    <div
+                        class="mail-row spam"
+                        onclick="openMailMessage(3)"
+                        data-search="theo new phone who dis"
+                    >
+
+                        <span>Theo</span>
+                        <span>New Phone who dis</span>
+                        <span>8/09</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="mail-footer">
+
+            <span>
+                4 messages
+            </span>
+
+            <button onclick="closeMail()">
+                Close
+            </button>
+
+        </div>
+
+    </div>
+
+    <div class="email-window" id="emailWindow">
+
+        <div class="email-title">
+            Message
+        </div>
+
+
+        <div class="email-toolbar">
+
+            <button>
+                Reply
+            </button>
+
+            <button>
+                Forward
+            </button>
+
+            <button>
+                Delete
+            </button>
+
+        </div>
+
+
+        <div class="email-document">
+
+            <div class="email-header">
+
+                <div>
+                    <strong>From:</strong>
+                    <span id="emailFrom"></span>
+                </div>
+
+
+                <div>
+                    <strong>Subject:</strong>
+                    <span id="emailSubject"></span>
+                </div>
+
+
+                <div>
+                    <strong>Date:</strong>
+                    <span id="emailDate"></span>
+                </div>
+
+            </div>
+
+
+            <div
+                class="email-body"
+                id="emailBody"
+            ></div>
+
+        </div>
+
+
+        <button
+            class="email-close"
+            onclick="closeMailMessage()"
+        >
+            Close
+        </button>
+
+    </div>
+
 </div>
 
 <script>
@@ -674,6 +927,108 @@ function launchSurprise() {
 
 function closeSurprise() {
     document.getElementById("surpriseWindow").style.display = "none";
+}
+
+function openMemories() {
+    document.getElementById("memoriesWindow").style.display = "flex";
+}
+
+function closeMemories() {
+    document.getElementById("memoriesWindow").style.display = "none";
+}
+
+const mailMessages = [
+
+    {
+        sender: "Laurel",
+        subject: "RE: Birthday plans",
+        date: "11-Aug-1996",
+
+        body:
+`Yeah, I'm  coming. I'll bring the seasoning!
+
+See you tomorrow!
+
+Laurel`
+    },
+
+
+    {
+        sender: "You",
+        subject: "Don't forget...",
+        date: "10-Aug-1996",
+
+        body:
+`Don't forget the cake.
+
+Seriously.
+
+You`
+    },
+
+
+    {
+        sender: "MP3 World",
+        subject: "CONGRATULATIONS! YOU'VE WON!",
+        date: "09-Aug-1996",
+
+        body:
+`CONGRATULATIONS!!!
+
+You have been selected to receive a FREE portable MP3 player!
+
+CLICK HERE TO CLAIM YOUR PRIZE!
+`
+    },
+
+
+    {
+        sender: "Theo",
+        subject: "New Phone who dis",
+        date: "09-Aug-1996",
+
+        body:
+`Hello?`
+    }
+
+];
+
+function openMail() {
+
+    document.getElementById("mailWindow").style.display = "flex";
+
+}
+
+function closeMail() {
+
+    document.getElementById("mailWindow").style.display = "none";
+
+}
+
+function openMailMessage(index) {
+
+    const message = mailMessages[index];
+
+    document.getElementById("emailFrom").textContent =
+        message.sender;
+
+    document.getElementById("emailSubject").textContent =
+        message.subject;
+
+    document.getElementById("emailDate").textContent =
+        message.date;
+
+    document.getElementById("emailBody").textContent =
+        message.body;
+
+    document.getElementById("emailWindow").style.display = "flex";
+
+}
+
+function closeMailMessage() {
+
+    document.getElementById("emailWindow").style.display = "none";
+
 }
 
 </script>

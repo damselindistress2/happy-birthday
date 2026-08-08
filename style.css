@@ -1013,3 +1013,382 @@ body{
     border-right: 2px solid #aeb8ee;
     border-bottom: 2px solid #aeb8ee;
 }
+
+.memories-window {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 560px;
+    min-height: 430px;
+    background: #6D7ABD;
+    border-top: 2px solid #aeb8ee;
+    border-left: 2px solid #aeb8ee;
+    border-right: 2px solid #3f4975;
+    border-bottom: 2px solid #3f4975;
+    box-shadow: 4px 4px 12px rgba(0,0,0,.35);
+    color: white;
+    flex-direction: column;
+}
+
+.memories-title {
+    padding: 6px 8px;
+    background: rgba(15,35,120,.35);
+    font-family: "Silkscreen", sans-serif;
+    font-size: 13px;
+}
+
+.memories-content {
+    flex: 1;
+    margin: 18px;
+    padding: 18px;
+    background: rgba(15,35,120,.35);
+    border-top: 2px solid #3f4975;
+    border-left: 2px solid #3f4975;
+    border-right: 2px solid #aeb8ee;
+    border-bottom: 2px solid #aeb8ee;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.memories-content img {
+    max-width: 420px;
+    max-height: 260px;
+    object-fit: contain;
+    image-rendering: pixelated;
+    border: 2px solid #20233d;
+}
+
+.memories-caption {
+    margin-top: 18px;
+    font-family: "VT323", monospace;
+    font-size: 20px;
+    text-align: center;
+}
+
+.memories-date {
+    margin-top: 5px;
+    font-family: "VT323", monospace;
+    font-size: 18px;
+    opacity: .75;
+}
+
+.memories-window button {
+    display: block;
+    margin: 0 auto 20px;
+    width: 80px;
+    height: 28px;
+    background: #6D7ABD;
+    color: white;
+    font-family: "VT323", monospace;
+    font-size: 18px;
+    border-top: 2px solid #aeb8ee;
+    border-left: 2px solid #aeb8ee;
+    border-right: 2px solid #3f4975;
+    border-bottom: 2px solid #3f4975;
+    cursor: pointer;
+}
+
+.memories-window button:active {
+    transform: translate(2px, 2px);
+    border-top: 2px solid #3f4975;
+    border-left: 2px solid #3f4975;
+    border-right: 2px solid #aeb8ee;
+    border-bottom: 2px solid #aeb8ee;
+}
+
+.birthday-content .file-row {
+    cursor: pointer;
+}
+
+.mail-window {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 820px;
+    height: 560px;
+    background: #6D7ABD;
+    border-top: 2px solid #aeb8ee;
+    border-left: 2px solid #aeb8ee;
+    border-right: 2px solid #3f4975;
+    border-bottom: 2px solid #3f4975;
+    box-shadow: 4px 4px 12px rgba(0,0,0,.35);
+    color: white;
+    flex-direction: column;
+    font-family: "VT323", monospace;
+}
+
+.mail-title {
+    padding: 6px 8px;
+    background: rgba(15,35,120,.35);
+    font-family: "Silkscreen", sans-serif;
+    font-size: 13px;
+}
+
+.mail-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px;
+    border-bottom: 2px solid #3f4975;
+}
+
+.mail-toolbar button,
+.mail-footer button {
+    height: 27px;
+    background: #6D7ABD;
+    color: white;
+    font-family: "VT323", monospace;
+    font-size: 17px;
+    border-top: 2px solid #aeb8ee;
+    border-left: 2px solid #aeb8ee;
+    border-right: 2px solid #3f4975;
+    border-bottom: 2px solid #3f4975;
+    cursor: pointer;
+}
+
+.mail-toolbar button:hover,
+.mail-footer button:hover {
+    transform: translate(-1px,-1px);
+}
+
+.mail-toolbar button:active,
+.mail-footer button:active {
+    transform: translate(2px,2px);
+    border-top: 2px solid #3f4975;
+    border-left: 2px solid #3f4975;
+    border-right: 2px solid #aeb8ee;
+    border-bottom: 2px solid #aeb8ee;
+}
+
+.mail-search {
+    display: flex;
+    margin-left: auto;
+    gap: 5px;
+}
+
+.mail-search input {
+    width: 145px;
+    height: 23px;
+    box-sizing: border-box;
+    font-family: "VT323", monospace;
+    font-size: 17px;
+    border: 2px solid #3f4975;
+    outline: none;
+}
+
+.mail-main {
+    display: flex;
+    flex: 1;
+    min-height: 0;
+}
+
+.mail-folders {
+    width: 145px;
+    padding: 12px 0;
+    background: rgba(15,35,120,.2);
+    border-right: 2px solid #3f4975;
+    box-sizing: border-box;
+}
+
+.folders-title {
+    padding: 0 12px 8px;
+    font-family: "Silkscreen", sans-serif;
+    font-size: 10px;
+}
+
+.mail-folder {
+    padding: 5px 12px;
+    font-size: 19px;
+    cursor: pointer;
+}
+
+.mail-folder:hover {
+    background: rgba(174,184,238,.2);
+}
+
+.mail-folder.active {
+    background: rgba(15,35,120,.35);
+}
+
+.mail-right {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+}
+
+.mail-list {
+    height: 100%;
+    overflow-y: auto;
+}
+
+.mail-list-header,
+.mail-row {
+    display: grid;
+    grid-template-columns: 150px 1fr 75px;
+    align-items: center;
+    padding: 7px 10px;
+    box-sizing: border-box;
+}
+
+.mail-list-header {
+    font-size: 19px;
+    border-bottom: 1px solid rgba(255,255,255,.5);
+}
+
+.mail-row {
+    font-size: 18px;
+    border-bottom: 1px solid rgba(255,255,255,.15);
+    cursor: pointer;
+}
+
+.mail-row:hover {
+    background: rgba(174,184,238,.2);
+}
+
+.mail-row.spam {
+    color: #e8eaff;
+}
+
+.mail-row span {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.mail-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 7px 12px;
+    border-top: 2px solid #aeb8ee;
+    font-size: 17px;
+}
+
+.mail-footer button {
+    width: 80px;
+}
+
+
+.email-window {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 430px;
+    background: #6D7ABD;
+    border-top: 2px solid #aeb8ee;
+    border-left: 2px solid #aeb8ee;
+    border-right: 2px solid #3f4975;
+    border-bottom: 2px solid #3f4975;
+    box-shadow: 4px 4px 12px rgba(0,0,0,.35);
+    color: white;
+    flex-direction: column;
+    font-family: "VT323", monospace;
+}
+
+.email-title {
+    padding: 6px 8px;
+    background: rgba(15,35,120,.35);
+    font-family: "Silkscreen", sans-serif;
+    font-size: 13px;
+}
+
+.email-toolbar {
+    display: flex;
+    gap: 6px;
+    padding: 7px;
+    border-bottom: 2px solid #3f4975;
+}
+
+.email-toolbar button {
+    height: 27px;
+    background: #6D7ABD;
+    color: white;
+    font-family: "VT323", monospace;
+    font-size: 17px;
+    border-top: 2px solid #aeb8ee;
+    border-left: 2px solid #aeb8ee;
+    border-right: 2px solid #3f4975;
+    border-bottom: 2px solid #3f4975;
+    cursor: pointer;
+}
+
+.email-toolbar button:hover {
+    transform: translate(-1px,-1px);
+}
+
+.email-toolbar button:active {
+    transform: translate(2px,2px);
+    border-top: 2px solid #3f4975;
+    border-left: 2px solid #3f4975;
+    border-right: 2px solid #aeb8ee;
+    border-bottom: 2px solid #aeb8ee;
+}
+
+.email-document {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+    margin: 15px;
+    background: rgba(15,35,120,.35);
+    border-top: 2px solid #3f4975;
+    border-left: 2px solid #3f4975;
+    border-right: 2px solid #aeb8ee;
+    border-bottom: 2px solid #aeb8ee;
+    box-sizing: border-box;
+}
+
+.email-header {
+    padding: 12px;
+    font-size: 19px;
+    line-height: 1.25;
+    border-bottom: 1px solid rgba(255,255,255,.4);
+}
+
+.email-body {
+    flex: 1;
+    padding: 15px;
+    font-size: 18px;
+    line-height: 1.2;
+    white-space: pre-line;
+    overflow-y: auto;
+}
+
+.email-close {
+    display: block;
+    margin: 0 auto 20px;
+    width: 80px;
+    height: 28px;
+    background: #6D7ABD;
+    color: white;
+    font-family: "VT323", monospace;
+    font-size: 18px;
+    border-top: 2px solid #aeb8ee;
+    border-left: 2px solid #aeb8ee;
+    border-right: 2px solid #3f4975;
+    border-bottom: 2px solid #3f4975;
+    cursor: pointer;
+}
+
+.email-close:hover {
+    transform: translate(-1px,-1px);
+}
+
+.email-close:active {
+    transform: translate(2px,2px);
+    border-top: 2px solid #3f4975;
+    border-left: 2px solid #3f4975;
+    border-right: 2px solid #aeb8ee;
+    border-bottom: 2px solid #aeb8ee;
+}
