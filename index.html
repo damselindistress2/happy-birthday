@@ -47,6 +47,16 @@
             <span>Internet</span>
         </div>
 
+        <div class="desktop-icon mail" onclick="openMail()">
+            <img src="email.png">
+            <span>e-Mail</span>
+        </div>
+
+        <div class="desktop-icon games" onclick="openGames()">
+            <img src="games.png">
+            <span>Games</span>
+        </div>
+
         <div class="desktop-icon recycle" onclick="openRecycle()">
             <img src="bin.png">
             <span>Recycle Bin</span>
@@ -80,7 +90,7 @@
                 <span>Size</span>
             </div>
 
-            <div class="file-row">
+            <div class="file-row birthday-file" onclick="openReadme()">
                 <span>README.txt</span>
                 <span>4 KB</span>
             </div>
@@ -90,9 +100,14 @@
                 <span>2.8 MB</span>
             </div>
 
-            <div class="file-row">
+            <div class="file-row birthday-file" onclick="launchSurprise()">
                 <span>surprise.exe</span>
                 <span>128 KB</span>
+            </div>
+
+            <div class="file-row birthday-file" onclick="openBaklava()">
+                <span>baklava recipe.txt</span>
+                <span>3 KB</span>
             </div>
 
             <div class="file-row secret-file" onclick="openSecret()">
@@ -378,6 +393,109 @@
 
     </div>
 
+    <div class="baklava-window" id="baklavaWindow">
+
+        <div class="baklava-title">
+            baklava recipe.txt
+        </div>
+
+        <div class="baklava-document">
+
+            Ingredients:<br><br>
+
+            - 500 g filo pastry<br>
+            - 250 g walnuts<br>
+            - 100 g almonds<br>
+            - 150 g butter<br>
+            - 150 g sugar<br>
+            - 1 tsp cinnamon<br><br>
+
+            For the syrup:<br><br>
+
+            - 200 g sugar<br>
+            - 150 ml water<br>
+            - 2 tbsp honey<br>
+            - 1 tbsp lemon juice<br><br>
+
+            Instructions:<br><br>
+
+            1. Chop the walnuts and almonds and mix with cinnamon.<br><br>
+
+            2. Melt the butter.<br><br>
+
+            3. Layer the filo pastry in a baking dish, brushing each layer with melted butter.<br><br>
+
+            4. Add the nut mixture between the layers.<br><br>
+
+            5. Finish with several layers of buttered filo.<br><br>
+
+            6. Cut into squares before baking.<br><br>
+
+            7. Bake at 180°C until golden brown.<br><br>
+
+            8. Heat the syrup ingredients together and simmer for a few minutes.<br><br>
+
+            9. Pour the hot syrup over the freshly baked baklava.<br><br>
+
+            10. Let it cool before serving.<br><br>
+
+            Enjoy!
+
+        </div>
+
+        <button onclick="closeBaklava()">
+            Close
+        </button>
+
+    </div>
+
+    <div class="readme-window" id="readmeWindow">
+
+        <div class="readme-title">
+            README.txt
+        </div>
+
+        <div class="readme-document">
+            Note to self:<br><br>
+            Stay awesome.
+        </div>
+
+        <button onclick="closeReadme()">
+            Close
+        </button>
+
+    </div>
+
+    <div class="surprise-window" id="surpriseWindow">
+
+        <div class="surprise-title">
+            surprise.exe
+        </div>
+
+        <div class="surprise-loading" id="surpriseLoading">
+
+            <div class="surprise-loading" id="surpriseLoading">
+
+                <div class="loading-text">
+                    Launching surprise.exe
+                </div>
+
+                <div class="loading-blocks" id="loadingBlocks"></div>
+
+            </div>
+
+        </div>
+
+        <div class="surprise-message" id="surpriseMessage">
+            HAPPY BIRTHDAY!
+        </div>
+
+        <button onclick="closeSurprise()">
+            Close
+        </button>
+
+    </div>
+
 </div>
 
 <script>
@@ -409,7 +527,6 @@ function openSaves(){
     document.getElementById("savesWindow").style.display = "flex";
 }
 
-
 function closeSaves(){
     document.getElementById("savesWindow").style.display = "none";
 }
@@ -425,7 +542,6 @@ let photos = [
 
 let currentPhotoIndex = 0;
 
-
 function openPhotos() {
     currentPhotoIndex = 0;
     document.getElementById("currentPhoto").src =
@@ -433,11 +549,9 @@ function openPhotos() {
     document.getElementById("photosWindow").style.display = "flex";
 }
 
-
 function closePhotos(){
     document.getElementById("photosWindow").style.display="none";
 }
-
 
 function nextPhoto(){
     currentPhotoIndex++;
@@ -461,11 +575,9 @@ function openWinamp() {
     document.getElementById("winampWindow").style.display = "flex";
 }
 
-
 function closeWinamp() {
     document.getElementById("winampWindow").style.display = "none";
 }
-
 
 function openSpotify() {
     window.open(
@@ -504,6 +616,64 @@ function openBirthdaySave() {
 
 function closeBirthdaySave() {
     document.getElementById("birthdaySaveWindow").style.display = "none";
+}
+
+function openBaklava() {
+    document.getElementById("baklavaWindow").style.display = "flex";
+}
+
+function closeBaklava() {
+    document.getElementById("baklavaWindow").style.display = "none";
+}
+
+function openReadme() {
+    document.getElementById("readmeWindow").style.display = "flex";
+}
+
+function closeReadme() {
+    document.getElementById("readmeWindow").style.display = "none";
+}
+
+function launchSurprise() {
+
+    const window = document.getElementById("surpriseWindow");
+    const loading = document.getElementById("surpriseLoading");
+    const message = document.getElementById("surpriseMessage");
+    const blocks = document.getElementById("loadingBlocks");
+
+    window.style.display = "flex";
+
+    loading.style.display = "flex";
+    message.style.display = "none";
+
+    blocks.textContent = "";
+
+    let count = 0;
+    const totalBlocks = 8;
+
+    const loadingInterval = setInterval(function() {
+
+        blocks.textContent += "■";
+        count++;
+
+        if (count >= totalBlocks) {
+            clearInterval(loadingInterval);
+        }
+
+    }, 250);
+
+    setTimeout(function() {
+
+        clearInterval(loadingInterval);
+
+        loading.style.display = "none";
+        message.style.display = "flex";
+
+    }, 2000);
+}
+
+function closeSurprise() {
+    document.getElementById("surpriseWindow").style.display = "none";
 }
 
 </script>

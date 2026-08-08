@@ -50,7 +50,6 @@ body{
     object-fit:contain;
 }
 
-
 .folder{
     top:35px;
     left:35px;
@@ -66,13 +65,23 @@ body{
     left:35px;
 }
 
-.saves{
+.games{
     top:35px;
+    right:35px;
+}
+
+.saves{
+    top:135px;
     right:35px;
 }
 
 .internet{
     top:335px;
+    left:35px;
+}
+
+.mail{
+    top:435px;
     left:35px;
 }
 
@@ -98,7 +107,6 @@ body{
     padding:4px 8px;
     box-sizing:border-box;
 }
-
 
 .start-button{
     display:flex;
@@ -130,7 +138,6 @@ body{
     height:45px;
     object-fit:contain;
 }
-
 
 .date{
     color:white;
@@ -483,13 +490,11 @@ body{
     background: #aeb8ee;
 }
 
-
 .winamp-status {
     margin-top: 15px;
     font-family: "Silkscreen", sans-serif;
     font-size: 10px;
 }
-
 
 .status-light {
     display: inline-block;
@@ -768,6 +773,240 @@ body{
 }
 
 .birthday-save-window button:active {
+    transform: translate(2px, 2px);
+    border-top: 2px solid #3f4975;
+    border-left: 2px solid #3f4975;
+    border-right: 2px solid #aeb8ee;
+    border-bottom: 2px solid #aeb8ee;
+}
+
+.baklava-window {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 420px;
+    background: #6D7ABD;
+    border-top: 2px solid #aeb8ee;
+    border-left: 2px solid #aeb8ee;
+    border-right: 2px solid #3f4975;
+    border-bottom: 2px solid #3f4975;
+    box-shadow: 4px 4px 12px rgba(0,0,0,.35);
+    color: white;
+    flex-direction: column;
+}
+
+.baklava-title {
+    padding: 6px 8px;
+    background: rgba(15,35,120,.35);
+    font-family: "Silkscreen", sans-serif;
+    font-size: 13px;
+}
+
+.baklava-document {
+    margin: 18px;
+    padding: 18px;
+    flex: 1;
+    background: rgba(15,35,120,.35);
+    color: #f7faf8;
+    border-top: 2px solid #3f4975;
+    border-left: 2px solid #3f4975;
+    border-right: 2px solid #aeb8ee;
+    border-bottom: 2px solid #aeb8ee;
+    font-family: "VT323", monospace;
+    font-size: 16px;
+    line-height: 1.1;
+    text-align: left;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.baklava-window button {
+    display: block;
+    margin: 0 auto 20px;
+    width: 80px;
+    height: 28px;
+    background: #6D7ABD;
+    color: white;
+    font-family: "VT323", monospace;
+    font-size: 18px;
+    border-top: 2px solid #aeb8ee;
+    border-left: 2px solid #aeb8ee;
+    border-right: 2px solid #3f4975;
+    border-bottom: 2px solid #3f4975;
+    cursor: pointer;
+}
+
+.baklava-window button:active {
+    transform: translate(2px, 2px);
+    border-top: 2px solid #3f4975;
+    border-left: 2px solid #3f4975;
+    border-right: 2px solid #aeb8ee;
+    border-bottom: 2px solid #aeb8ee;
+}
+
+.birthday-file {
+    cursor: pointer;
+}
+
+.readme-window {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 320px;
+    background: #6D7ABD;
+    border-top: 2px solid #aeb8ee;
+    border-left: 2px solid #aeb8ee;
+    border-right: 2px solid #3f4975;
+    border-bottom: 2px solid #3f4975;
+    box-shadow: 4px 4px 12px rgba(0,0,0,.35);
+    color: white;
+    flex-direction: column;
+}
+
+.readme-title {
+    padding: 6px 8px;
+    background: rgba(15,35,120,.35);
+    font-family: "Silkscreen", sans-serif;
+    font-size: 13px;
+}
+
+.readme-document {
+    margin: 18px;
+    padding: 18px;
+    flex: 1;
+    background: rgba(15,35,120,.35);
+    color: #f7faf8;
+    border-top: 2px solid #3f4975;
+    border-left: 2px solid #3f4975;
+    border-right: 2px solid #aeb8ee;
+    border-bottom: 2px solid #aeb8ee;
+    font-family: "VT323", monospace;
+    font-size: 16px;
+    line-height: 1.2;
+    text-align: left;
+    overflow: hidden;
+}
+
+.readme-window button {
+    display: block;
+    margin: 0 auto 20px;
+    width: 80px;
+    height: 28px;
+    background: #6D7ABD;
+    color: white;
+    font-family: "VT323", monospace;
+    font-size: 18px;
+    border-top: 2px solid #aeb8ee;
+    border-left: 2px solid #aeb8ee;
+    border-right: 2px solid #3f4975;
+    border-bottom: 2px solid #3f4975;
+    cursor: pointer;
+}
+
+.readme-window button:active {
+    transform: translate(2px, 2px);
+    border-top: 2px solid #3f4975;
+    border-left: 2px solid #3f4975;
+    border-right: 2px solid #aeb8ee;
+    border-bottom: 2px solid #aeb8ee;
+}
+
+.birthday-file {
+    cursor: pointer;
+}
+
+.surprise-window {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 300px;
+    background: #4d598f;
+    border-top: 2px solid #aeb8ee;
+    border-left: 2px solid #aeb8ee;
+    border-right: 2px solid #3f4975;
+    border-bottom: 2px solid #3f4975;
+    box-shadow: 4px 4px 12px rgba(0,0,0,.45);
+    color: white;
+    flex-direction: column;
+}
+
+.surprise-title {
+    padding: 6px 8px;
+    background: rgba(15,35,120,.45);
+    font-family: "Silkscreen", sans-serif;
+    font-size: 13px;
+}
+
+.surprise-loading {
+    margin: 18px;
+    padding: 18px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: "VT323", monospace;
+    font-size: 24px;
+    box-sizing: border-box;
+}
+
+.loading-text {
+    margin-bottom: 18px;
+}
+
+.loading-blocks {
+    font-size: 20px;
+    letter-spacing: 3px;
+    color: #aeb8ee;
+    min-height: 24px;
+}
+
+.surprise-message {
+    display: none;
+    margin: 18px;
+    padding: 18px;
+    flex: 1;
+    background: rgba(15,35,120,.35);
+    color: #f7faf8;
+    border-top: 2px solid #3f4975;
+    border-left: 2px solid #3f4975;
+    border-right: 2px solid #aeb8ee;
+    border-bottom: 2px solid #aeb8ee;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: "Silkscreen", sans-serif;
+    font-size: 30px;
+    text-shadow: 2px 2px #20233d;
+    box-sizing: border-box;
+}
+
+.surprise-window button {
+    display: block;
+    margin: 0 auto 20px;
+    width: 80px;
+    height: 28px;
+    background: #6D7ABD;
+    color: white;
+    font-family: "VT323", monospace;
+    font-size: 18px;
+    border-top: 2px solid #aeb8ee;
+    border-left: 2px solid #aeb8ee;
+    border-right: 2px solid #3f4975;
+    border-bottom: 2px solid #3f4975;
+    cursor: pointer;
+}
+
+.surprise-window button:active {
     transform: translate(2px, 2px);
     border-top: 2px solid #3f4975;
     border-left: 2px solid #3f4975;
