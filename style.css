@@ -25,7 +25,6 @@ body{
     pointer-events:none;
 }
 
-
 .desktop-icons{
     position:absolute;
     inset:0;
@@ -68,12 +67,12 @@ body{
 }
 
 .saves{
-    top:335px;
-    left:35px;
+    top:35px;
+    right:35px;
 }
 
 .internet{
-    top:435px;
+    top:335px;
     left:35px;
 }
 
@@ -159,29 +158,19 @@ body{
 
 .recycle-window{
     display:none;
-
     position:absolute;
-
     top:50%;
     left:50%;
-
     transform:translate(-50%,-50%);
-
     width:730px;
-
     min-height:400px;
-
     background:#6D7ABD;
-
     border-top:2px solid #aeb8ee;
     border-left:2px solid #aeb8ee;
     border-right:2px solid #3f4975;
     border-bottom:2px solid #3f4975;
-
     box-shadow:4px 4px 12px rgba(0,0,0,.35);
-
     color:white;
-
     flex-direction:column;
 }
 
@@ -263,7 +252,7 @@ body{
     border-bottom:2px solid #aeb8ee;
 }
 
-
+.secret-window,
 .saves-window{
     display:none;
     position:absolute;
@@ -282,7 +271,6 @@ body{
     flex-direction:column;
 }
 
-
 .saves-title{
     padding:6px 8px;
     background:rgba(15,35,120,.35);
@@ -290,13 +278,11 @@ body{
     font-size:13px;
 }
 
-
 .saves-content{
     padding:25px;
     font-family:"VT323", monospace;
     font-size:26px;
 }
-
 
 .saves-window button{
     display:block;
@@ -314,11 +300,9 @@ body{
     cursor:pointer;
 }
 
-
 .saves-window button:active{
     transform:translate(2px,2px);
 }
-
 
 .photos-window{
     display:none;
@@ -338,14 +322,12 @@ body{
     flex-direction:column;
 }
 
-
 .photos-title{
     padding:6px 8px;
     background:rgba(15,35,120,.35);
     font-family:"Silkscreen", sans-serif;
     font-size:13px;
 }
-
 
 .photo-viewer{
     flex:1;
@@ -355,13 +337,11 @@ body{
     padding:20px;
 }
 
-
 .photo-viewer img{
     max-width:520px;
     max-height:320px;
     object-fit:contain;
 }
-
 
 .photo-controls{
     display:flex;
@@ -369,7 +349,6 @@ body{
     gap:20px;
     padding:15px;
 }
-
 
 .photos-window button{
     width:70px;
@@ -382,303 +361,416 @@ body{
     border-left:2px solid #aeb8ee;
     border-right:2px solid #3f4975;
     border-bottom:2px solid #3f4975;
+    cursor: pointer;
 }
 
-/* =========================
-   WINAMP WINDOW
-========================= */
-
 .winamp-window {
-
     display: none;
-
     position: absolute;
-
     top: 50%;
     left: 50%;
-
     transform: translate(-50%, -50%);
-
     width: 440px;
-
     background: #6D7ABD;
-
     border-top: 2px solid #aeb8ee;
     border-left: 2px solid #aeb8ee;
-
     border-right: 2px solid #3f4975;
     border-bottom: 2px solid #3f4975;
-
     box-shadow: 4px 4px 12px rgba(0,0,0,.35);
-
     color: white;
-
     flex-direction: column;
-
     font-family: "VT323", monospace;
 }
 
-
-/* TITLE BAR */
-
 .winamp-title {
-
     padding: 6px 8px;
-
     background: rgba(15,35,120,.35);
-
     font-family: "Silkscreen", sans-serif;
-
     font-size: 13px;
 }
 
-
-/* PLAYER */
-
 .winamp-player {
-
     padding: 20px;
 }
 
-
-/* SCREEN */
-
 .winamp-screen {
-
     padding: 18px;
-
     background: #20233d;
-
     border-top: 2px solid #3f4975;
     border-left: 2px solid #3f4975;
-
     border-right: 2px solid #aeb8ee;
     border-bottom: 2px solid #aeb8ee;
-
     box-sizing: border-box;
 }
 
-
-/* NOW PLAYING */
-
 .winamp-now-playing {
-
     font-family: "Silkscreen", sans-serif;
-
     font-size: 10px;
-
     margin-bottom: 12px;
-
     opacity: .8;
 }
 
-
-/* SONG */
-
 .winamp-song {
-
     font-size: 25px;
-
     white-space: nowrap;
-
     overflow: hidden;
-
     text-overflow: ellipsis;
-
     text-shadow: 1px 1px #111;
 }
 
-
-/* ARTIST */
-
 .winamp-artist {
-
     font-size: 19px;
-
     margin-top: 3px;
-
     opacity: .8;
 }
 
-
-/* PROGRESS */
-
 .winamp-progress {
-
     margin-top: 20px;
 }
 
-
 .progress-bar {
-
     width: 100%;
-
     height: 8px;
-
     background: #11152a;
-
     border: 1px solid #59618f;
-
     box-sizing: border-box;
 }
 
-
 .progress-fill {
-
     width: 38%;
-
     height: 100%;
-
     background: #aeb8ee;
 }
 
-
 .time {
-
     display: flex;
-
     justify-content: space-between;
-
     margin-top: 5px;
-
     font-size: 16px;
 }
 
-
-/* CONTROLS */
-
 .winamp-controls {
-
     display: flex;
-
     justify-content: center;
-
     gap: 8px;
-
     margin-top: 18px;
 }
 
-
 .winamp-controls button {
-
     width: 55px !important;
-
     height: 30px !important;
-
     margin: 0 !important;
 }
 
-
-/* VOLUME */
-
 .winamp-volume {
-
     display: flex;
-
     align-items: center;
-
     gap: 10px;
-
     margin-top: 18px;
-
     font-size: 18px;
 }
 
-
 .volume-bar {
-
     flex: 1;
-
     height: 7px;
-
     background: #20233d;
-
     border: 1px solid #aeb8ee;
 }
 
-
 .volume-fill {
-
     width: 72%;
-
     height: 100%;
-
     background: #aeb8ee;
 }
 
 
-/* STATUS */
-
 .winamp-status {
-
     margin-top: 15px;
-
     font-family: "Silkscreen", sans-serif;
-
     font-size: 10px;
 }
 
 
 .status-light {
-
     display: inline-block;
-
     width: 7px;
-
     height: 7px;
-
     margin-right: 6px;
-
     background: #aeb8ee;
-
     box-shadow: 0 0 4px #aeb8ee;
 }
 
-
-/* BUTTONS */
-
 .winamp-window button {
-
     background: #6D7ABD;
-
     color: white;
-
     font-family: "VT323", monospace;
-
     font-size: 18px;
-
     border-top: 2px solid #aeb8ee;
     border-left: 2px solid #aeb8ee;
-
     border-right: 2px solid #3f4975;
     border-bottom: 2px solid #3f4975;
-
     cursor: pointer;
 }
 
-
 .winamp-window button:active {
-
     transform: translate(2px, 2px);
-
     border-top: 2px solid #3f4975;
     border-left: 2px solid #3f4975;
-
     border-right: 2px solid #aeb8ee;
     border-bottom: 2px solid #aeb8ee;
 }
 
-
-/* CLOSE */
-
 .winamp-close {
-
     display: block;
-
     width: 70px;
-
     height: 28px;
-
     margin: 20px auto 0;
 }
 
+.birthday-window {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 730px;
+    min-height: 400px;
+    background: #6D7ABD;
+    border-top: 2px solid #aeb8ee;
+    border-left: 2px solid #aeb8ee;
+    border-right: 2px solid #3f4975;
+    border-bottom: 2px solid #3f4975;
+    box-shadow: 4px 4px 12px rgba(0,0,0,.35);
+    color: white;
+    flex-direction: column;
+}
+
+.birthday-title{
+    padding: 6px 8px;
+    background: rgba(15,35,120,.35);
+    font-family: "Silkscreen", sans-serif;
+    font-size: 13px;
+}
+
+.birthday-content {
+    padding: 25px;
+    font-family: "VT323", monospace;
+    font-size: 26px;
+    flex: 1;
+}
+
+.birthday-content .file-header,
+.birthday-content .file-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 2px;
+    font-weight: normal;
+    font-size: 18px;
+}
+
+.birthday-content .file-header {
+    border-bottom: 1px solid rgba(255,255,255,0.5);
+    margin-bottom: 10px;
+    font-size: 22px;
+}
+
+.birthday-window button {
+    display: block;
+    margin: auto auto 20px;
+    width: 80px;
+    height: 28px;
+    background: #6D7ABD;
+    color: white;
+    font-family: "VT323", monospace;
+    font-size: 18px;
+    border-top: 2px solid #aeb8ee;
+    border-left: 2px solid #aeb8ee;
+    border-right: 2px solid #3f4975;
+    border-bottom: 2px solid #3f4975;
+    cursor: pointer;
+}
+
+.birthday-window button:active {
+    transform: translate(2px, 2px);
+    border-top: 2px solid #3f4975;
+    border-left: 2px solid #3f4975;
+    border-right: 2px solid #aeb8ee;
+    border-bottom: 2px solid #aeb8ee;
+}
+
+.secret-title{
+    padding: 6px 8px;
+    background: rgba(15,35,120,.35);
+    font-family: "Silkscreen", sans-serif;
+    font-size: 13px;
+}
+
+.secret-content {
+    padding: 25px;
+    font-family: "VT323", monospace;
+    font-size: 26px;
+    flex: 1;
+}
+
+.secret-window button{
+    display: block;
+    margin: auto auto 20px;
+    width: 80px;
+    height: 28px;
+    background: #6D7ABD;
+    color: white;
+    font-family: "VT323", monospace;
+    font-size: 18px;
+    border-top: 2px solid #aeb8ee;
+    border-left: 2px solid #aeb8ee;
+    border-right: 2px solid #3f4975;
+    border-bottom: 2px solid #3f4975;
+    cursor: pointer;
+}
+
+.secret-window button:active {
+    transform: translate(2px, 2px);
+    border-top: 2px solid #3f4975;
+    border-left: 2px solid #3f4975;
+    border-right: 2px solid #aeb8ee;
+    border-bottom: 2px solid #aeb8ee;
+}
+
+.secret-file,
+.birthday-save-file {
+    cursor: pointer;
+}
+
+.passwords-window {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 520px;
+    min-height: 340px;
+    background: #6D7ABD;
+    border-top: 2px solid #aeb8ee;
+    border-left: 2px solid #aeb8ee;
+    border-right: 2px solid #3f4975;
+    border-bottom: 2px solid #3f4975;
+    box-shadow: 4px 4px 12px rgba(0,0,0,.35);
+    color: white;
+    flex-direction: column;
+}
+
+.passwords-title {
+    padding: 6px 8px;
+    background: rgba(15,35,120,.35);
+    font-family: "Silkscreen", sans-serif;
+    font-size: 13px;
+}
+
+.passwords-document {
+    margin: 20px;
+    padding: 15px;
+    min-height: 190px;
+    box-sizing: border-box;
+    background: rgba(15,35,120,.35);
+    color: #f7faf8;
+    border-top: 2px solid #3f4975;
+    border-left: 2px solid #3f4975;
+    border-right: 2px solid #aeb8ee;
+    border-bottom: 2px solid #aeb8ee;
+    font-family: "VT323", monospace;
+    font-size: 18px;
+    line-height: 1.2;
+    text-align: left;
+    overflow: hidden;
+    flex: 1;
+}
+
+.passwords-window button {
+    display: block;
+    margin: auto auto 20px;
+    width: 80px;
+    height: 28px;
+    background: #6D7ABD;
+    color: white;
+    font-family: "VT323", monospace;
+    font-size: 18px;
+    border-top: 2px solid #aeb8ee;
+    border-left: 2px solid #aeb8ee;
+    border-right: 2px solid #3f4975;
+    border-bottom: 2px solid #3f4975;
+    cursor: pointer;
+}
+
+.passwords-window button:active {
+    transform: translate(2px, 2px);
+    border-top: 2px solid #3f4975;
+    border-left: 2px solid #3f4975;
+    border-right: 2px solid #aeb8ee;
+    border-bottom: 2px solid #aeb8ee;
+}
+
+.birthday-save-window {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 420px;
+    background: #6D7ABD;
+    border-top: 2px solid #aeb8ee;
+    border-left: 2px solid #aeb8ee;
+    border-right: 2px solid #3f4975;
+    border-bottom: 2px solid #3f4975;
+    box-shadow: 4px 4px 12px rgba(0,0,0,.35);
+    color: white;
+    flex-direction: column;
+}
+
+.birthday-save-title {
+    padding: 6px 8px;
+    background: rgba(15,35,120,.35);
+    font-family: "Silkscreen", sans-serif;
+    font-size: 13px;
+}
+
+.birthday-save-document {
+    margin: 18px;
+    padding: 18px;
+    flex: 1;
+    background: rgba(15,35,120,.35);
+    color: #f7faf8;
+    border-top: 2px solid #3f4975;
+    border-left: 2px solid #3f4975;
+    border-right: 2px solid #aeb8ee;
+    border-bottom: 2px solid #aeb8ee;
+    font-family: "VT323", monospace;
+    font-size: 16px;
+    line-height: 1.1;
+    text-align: left;
+    overflow: hidden;
+}
+
+.birthday-save-window button {
+    display: block;
+    margin: 0 auto 20px;
+    width: 80px;
+    height: 28px;
+    background: #6D7ABD;
+    color: white;
+    font-family: "VT323", monospace;
+    font-size: 18px;
+    border-top: 2px solid #aeb8ee;
+    border-left: 2px solid #aeb8ee;
+    border-right: 2px solid #3f4975;
+    border-bottom: 2px solid #3f4975;
+    cursor: pointer;
+}
+
+.birthday-save-window button:active {
+    transform: translate(2px, 2px);
+    border-top: 2px solid #3f4975;
+    border-left: 2px solid #3f4975;
+    border-right: 2px solid #aeb8ee;
+    border-bottom: 2px solid #aeb8ee;
+}

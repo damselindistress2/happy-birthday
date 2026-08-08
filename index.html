@@ -20,10 +20,9 @@
 
     <div class="gradient"></div>
 
-
     <div class="desktop-icons">
 
-        <div class="desktop-icon folder">
+        <div class="desktop-icon folder" onclick="openBirthday()">
             <img src="folder.png">
             <span>Birthday</span>
         </div>
@@ -68,6 +67,46 @@
 
     </div>
 
+    <div class="birthday-window" id="birthdayWindow">
+
+        <div class="birthday-title">
+            Birthday
+        </div>
+
+        <div class="birthday-content">
+
+            <div class="file-header">
+                <span>Name</span>
+                <span>Size</span>
+            </div>
+
+            <div class="file-row">
+                <span>README.txt</span>
+                <span>4 KB</span>
+            </div>
+
+            <div class="file-row">
+                <span>memories.bmp</span>
+                <span>2.8 MB</span>
+            </div>
+
+            <div class="file-row">
+                <span>surprise.exe</span>
+                <span>128 KB</span>
+            </div>
+
+            <div class="file-row secret-file" onclick="openSecret()">
+                <span>secret</span>
+                <span>Folder</span>
+            </div>
+
+        </div>
+
+        <button onclick="closeBirthday()">
+            Close
+        </button>
+
+    </div>
 
     <div class="party-window" id="partyWindow">
 
@@ -146,11 +185,8 @@
 
 
             <div class="winamp-status">
-
                 <span class="status-light"></span>
-
                 READY
-
             </div>
 
 
@@ -170,14 +206,11 @@
 
 
         <div class="photo-viewer">
-
             <img id="currentPhoto" src="chess.png">
-
         </div>
 
 
         <div class="photo-controls">
-
             <button onclick="prevPhoto()">
                 ◀
             </button>
@@ -189,11 +222,95 @@
             <button onclick="closePhotos()">
                 Close
             </button>
-
         </div>
 
     </div>
 
+    <div class="saves-window" id="savesWindow">
+
+        <div class="saves-title">
+            Saves
+        </div>
+
+
+        <div class="saves-content">
+
+            <div class="file-header">
+                <span>Name</span>
+                <span>Size</span>
+            </div>
+
+
+            <div class="file-row">
+                <span>save1.dat</span>
+                <span>512 KB</span>
+            </div>
+
+
+            <div class="file-row">
+                <span>save2.dat</span>
+                <span>768 KB</span>
+            </div>
+
+
+            <div class="file-row birthday-save-file" onclick="openBirthdaySave()">
+                <span>birthday.sav</span>
+                <span>4.2 MB</span>
+            </div>
+
+        </div>
+
+
+        <button onclick="closeSaves()">
+            Close
+        </button>
+
+    </div>
+
+    <div class="secret-window" id="secretWindow">
+
+        <div class="secret-title">
+            secret
+        </div>
+
+        <div class="secret-content">
+
+            <div class="file-header">
+                <span>Name</span>
+                <span>Size</span>
+            </div>
+
+            <div class="file-row secret-file" onclick="openPasswords()">
+                <span>passwords.txt</span>
+                <span>1 KB</span>
+            </div>
+
+        </div>
+
+        <button onclick="closeSecret()">
+            Close
+        </button>
+
+    </div>
+
+    <div class="passwords-window" id="passwordsWindow">
+
+        <div class="passwords-title">
+            passwords.txt
+        </div>
+
+        <div class="passwords-document">
+
+            The secret is...<br><br>
+            You're getting old.
+
+        </div>
+
+        <button onclick="closePasswords()">
+            Close
+        </button>
+
+    </div>
 
     <div class="recycle-window" id="recycleWindow">
 
@@ -231,42 +348,31 @@
 
     </div>
 
-    <div class="saves-window" id="savesWindow">
+    <div class="birthday-save-window" id="birthdaySaveWindow">
 
-        <div class="saves-title">
-            Saves
+        <div class="birthday-save-title">
+            birthday.sav
         </div>
 
+        <div class="birthday-save-document">
+            Player: Birthday Boy<br>
+            Level: 30<br>
+            Health: 100%<br>
+            Energy: 47%<br><br>
 
-        <div class="saves-content">
+            Inventory:<br>
+            - Cake<br>
+            - Party hat<br>
+            - Back pain<br><br>
 
-            <div class="file-header">
-                <span>Name</span>
-                <span>Size</span>
-            </div>
+            Achievement Unlocked:<br>
+            "Made It Another Year"<br><br>
 
-
-            <div class="file-row">
-                <span>save1.dat</span>
-                <span>512 KB</span>
-            </div>
-
-
-            <div class="file-row">
-                <span>save2.dat</span>
-                <span>768 KB</span>
-            </div>
-
-
-            <div class="file-row">
-                <span>birthday.sav</span>
-                <span>4.2 MB</span>
-            </div>
+            Autosave complete.
 
         </div>
 
-
-        <button onclick="closeSaves()">
+        <button onclick="closeBirthdaySave()">
             Close
         </button>
 
@@ -321,75 +427,85 @@ let currentPhotoIndex = 0;
 
 
 function openPhotos() {
-
     currentPhotoIndex = 0;
-
     document.getElementById("currentPhoto").src =
         photos[currentPhotoIndex];
-
     document.getElementById("photosWindow").style.display = "flex";
 }
 
 
 function closePhotos(){
-
     document.getElementById("photosWindow").style.display="none";
-
 }
 
 
 function nextPhoto(){
-
     currentPhotoIndex++;
-
     if(currentPhotoIndex >= photos.length){
-
         currentPhotoIndex = 0;
-
     }
-
     document.getElementById("currentPhoto").src =
     photos[currentPhotoIndex];
-
 }
 
 function prevPhoto(){
-
     currentPhotoIndex--;
-
     if(currentPhotoIndex < 0){
-
         currentPhotoIndex = photos.length - 1;
-
     }
-
     document.getElementById("currentPhoto").src =
         photos[currentPhotoIndex];
-
 }
 
 function openWinamp() {
-
     document.getElementById("winampWindow").style.display = "flex";
-
 }
 
 
 function closeWinamp() {
-
     document.getElementById("winampWindow").style.display = "none";
-
 }
 
 
 function openSpotify() {
-
     window.open(
-        "https://open.spotify.com/track/4cOdK2wGLETKBW3PvgPWqT",
+        "https://www.youtube.com/watch?v=dQw4w9WgXcQ&list=RDdQw4w9WgXcQ&start_radio=1",
         "_blank"
     );
-
 }
+
+function openBirthday() {
+    document.getElementById("birthdayWindow").style.display = "flex";
+}
+
+function closeBirthday() {
+    document.getElementById("birthdayWindow").style.display = "none";
+}
+
+function openSecret() {
+    document.getElementById("secretWindow").style.display = "flex";
+}
+
+function closeSecret() {
+    document.getElementById("secretWindow").style.display = "none";
+}
+
+function openPasswords() {
+    document.getElementById("passwordsWindow").style.display = "flex";
+}
+
+function closePasswords() {
+    document.getElementById("passwordsWindow").style.display = "none";
+}
+
+function openBirthdaySave() {
+    document.getElementById("birthdaySaveWindow").style.display = "flex";
+}
+
+function closeBirthdaySave() {
+    document.getElementById("birthdaySaveWindow").style.display = "none";
+}
+
 </script>
 
 </body>
