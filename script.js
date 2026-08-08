@@ -186,6 +186,22 @@ function closeMemories() {
 const mailMessages = [
 
     {
+        sender: "celacım",
+        subject: "birthday gl1tches",
+        date: "12-Aug-1996",
+
+        body:
+`my timmycım,
+
+od srca ti želim sve najbolje — may you, above all, be in good health and live in love, lightness, contentment & fulfillment
+
+senin için iyi olan her şey yolunu bulup sana gelsin
+
+love,
+ M`
+    },
+
+    {
         sender: "Mourdy",
         subject: "Mourdy’s Manifesto",
         date: "12-Aug-1996",
@@ -382,12 +398,8 @@ function openMailMessage(index) {
     if (message.spam) {
 
         body.innerHTML = `
-            <div class="spam-email">CONGRATULATIONS!!!<br>
-                You have been selected to receive a FREE portable MP3 player!<br>
-                <span
-                    class="spam-link"
-                    onclick="triggerBSOD(event)"
-                >CLICK HERE TO CLAIM YOUR PRIZE!</span>
+            <div class="spam-email">CONGRATULATIONS!!!<br><br>You have been selected to receive a FREE portable MP3 player!<br>
+                <span class="spam-link" onclick="triggerBSOD(event)">CLICK HERE TO CLAIM YOUR PRIZE!</span>
             </div>
         `;
 

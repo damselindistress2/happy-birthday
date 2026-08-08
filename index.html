@@ -750,7 +750,7 @@
                 <span>64 KB</span>
             </div>
 
-            <div class="file-row game-file"">
+            <div class="file-row game-file" onclick="openMinesweeper()">
                 <span>minesweeper.exe</span>
                 <span>92 KB</span>
             </div>
@@ -810,6 +810,73 @@
     
         </div>
     
+    </div>
+
+    <div class="minesweeper-window" id="minesweeperWindow">
+
+        <div class="minesweeper-title">
+            Minesweeper
+        </div>
+
+
+        <div class="minesweeper-top">
+
+            <div class="mine-counter" id="mineCounter">
+                010
+            </div>
+
+            <button
+                class="minesweeper-reset"
+                id="minesweeperReset"
+                type="button"
+            >
+                :)
+            </button>
+
+            <div class="mine-timer" id="mineTimer">
+                000
+            </div>
+
+        </div>
+
+
+        <div
+            class="minesweeper-board"
+            id="minesweeperBoard"
+        ></div>
+
+
+        <button
+            class="minesweeper-close"
+            id="minesweeperClose"
+            type="button"
+        >
+            Close
+        </button>
+
+    </div>
+
+    <div
+        class="minesweeper-win-window"
+        id="minesweeperWinWindow"
+    >
+
+        <div class="minesweeper-win-title">
+            Minesweeper
+        </div>
+
+        <div class="minesweeper-win-message">
+            YOU WIN!
+        </div>
+
+        <button
+            class="minesweeper-win-close"
+            id="minesweeperWinClose"
+            type="button"
+        >
+            OK
+        </button>
+
     </div>
 
 </div>

@@ -1618,3 +1618,435 @@ body{
     border-bottom: 2px solid #aeb8ee;
 }
 
+/* =========================
+   MINESWEEPER WINDOW
+========================= */
+
+.minesweeper-window {
+    display: none;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 340px;
+
+    background: #6d7abd;
+    color: white;
+
+    border-top: 2px solid #aeb8ee;
+    border-left: 2px solid #aeb8ee;
+    border-right: 2px solid #3f4975;
+    border-bottom: 2px solid #3f4975;
+
+    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.35);
+
+    font-family: "VT323", monospace;
+
+    flex-direction: column;
+
+    z-index: 1000;
+}
+
+
+/* =========================
+   TITLE
+========================= */
+
+.minesweeper-title {
+    padding: 6px 8px;
+
+    background: rgba(15, 35, 120, 0.35);
+
+    font-family: "Silkscreen", sans-serif;
+    font-size: 13px;
+}
+
+
+/* =========================
+   TOP DISPLAY
+========================= */
+
+.minesweeper-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin: 10px;
+
+    padding: 7px;
+
+    background: #4d598f;
+
+    border-top: 2px solid #3f4975;
+    border-left: 2px solid #3f4975;
+    border-right: 2px solid #aeb8ee;
+    border-bottom: 2px solid #aeb8ee;
+}
+
+
+/* =========================
+   COUNTER / TIMER
+========================= */
+
+.mine-counter,
+.mine-timer {
+    width: 55px;
+
+    padding: 3px;
+
+    box-sizing: border-box;
+
+    background: #20233d;
+    color: #f7faf8;
+
+    border: 2px solid #3f4975;
+
+    font-family: "VT323", monospace;
+    font-size: 25px;
+
+    text-align: center;
+}
+
+
+/* =========================
+   RESET BUTTON
+========================= */
+
+.minesweeper-reset {
+    width: 34px;
+    height: 30px;
+
+    padding: 0;
+
+    background: #6d7abd;
+    color: white;
+
+    font-family: "VT323", monospace;
+    font-size: 20px;
+
+    border-top: 2px solid #aeb8ee;
+    border-left: 2px solid #aeb8ee;
+    border-right: 2px solid #3f4975;
+    border-bottom: 2px solid #3f4975;
+
+    cursor: pointer;
+}
+
+.minesweeper-reset:active {
+    transform: translate(2px, 2px);
+
+    border-top: 2px solid #3f4975;
+    border-left: 2px solid #3f4975;
+    border-right: 2px solid #aeb8ee;
+    border-bottom: 2px solid #aeb8ee;
+}
+
+
+/* =========================
+   BOARD
+========================= */
+
+.minesweeper-board {
+    display: grid;
+
+    grid-template-columns: repeat(9, 30px);
+    grid-template-rows: repeat(9, 30px);
+
+    width: 270px;
+    height: 270px;
+
+    margin: 0 auto 12px;
+
+    border-top: 3px solid #3f4975;
+    border-left: 3px solid #3f4975;
+    border-right: 3px solid #aeb8ee;
+    border-bottom: 3px solid #aeb8ee;
+
+    box-sizing: content-box;
+
+    touch-action: none;
+    user-select: none;
+}
+
+
+/* =========================
+   CELLS
+========================= */
+
+.minesweeper-cell {
+    width: 30px;
+    height: 30px;
+
+    box-sizing: border-box;
+
+    background: #6d7abd;
+
+    border-top: 2px solid #aeb8ee;
+    border-left: 2px solid #aeb8ee;
+    border-right: 2px solid #3f4975;
+    border-bottom: 2px solid #3f4975;
+
+    font-family: "VT323", monospace;
+    font-size: 22px;
+    font-weight: bold;
+
+    text-align: center;
+    line-height: 26px;
+
+    cursor: pointer;
+
+    user-select: none;
+    touch-action: none;
+}
+
+
+/* =========================
+   HOVER
+========================= */
+
+.minesweeper-cell:hover {
+    background: #7d88c4;
+}
+
+
+/* =========================
+   REVEALED CELL
+========================= */
+
+.minesweeper-cell.revealed {
+    background: #59648f;
+
+    border: 1px solid #3f4975;
+
+    cursor: default;
+}
+
+
+/* =========================
+   FLAG
+========================= */
+
+.minesweeper-cell.flagged {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+}
+
+
+/*
+   Tiny pixel flag.
+*/
+
+.pixel-flag {
+    position: relative;
+
+    width: 12px;
+    height: 14px;
+
+    display: block;
+
+    pointer-events: none;
+}
+
+
+/* Flag cloth */
+
+.flag-cloth {
+    position: absolute;
+
+    left: 1px;
+    top: 1px;
+
+    width: 7px;
+    height: 5px;
+
+    background: #d8a0b8;
+
+    box-shadow:
+        0 2px #d8a0b8,
+        0 4px #d8a0b8;
+
+    pointer-events: none;
+}
+
+
+/* Flag pole */
+
+.flag-pole {
+    position: absolute;
+
+    left: 1px;
+    top: 1px;
+
+    width: 2px;
+    height: 11px;
+
+    background: #e6d0a8;
+
+    box-shadow:
+        2px 10px #e6d0a8,
+        4px 10px #e6d0a8,
+        6px 10px #e6d0a8;
+
+    pointer-events: none;
+}
+
+
+/* =========================
+   MINE
+========================= */
+
+.minesweeper-cell.mine {
+    background: #7a4560;
+}
+
+
+/* =========================
+   CLOSE BUTTON
+========================= */
+
+.minesweeper-close {
+    display: block;
+
+    margin: 0 auto 12px;
+
+    width: 80px;
+    height: 28px;
+
+    background: #6d7abd;
+    color: white;
+
+    font-family: "VT323", monospace;
+    font-size: 18px;
+
+    border-top: 2px solid #aeb8ee;
+    border-left: 2px solid #aeb8ee;
+    border-right: 2px solid #3f4975;
+    border-bottom: 2px solid #3f4975;
+
+    cursor: pointer;
+}
+
+.minesweeper-close:active {
+    transform: translate(2px, 2px);
+}
+
+
+/* =========================
+   WIN WINDOW
+========================= */
+
+.minesweeper-win-window {
+    display: none;
+
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    width: 300px;
+    min-height: 170px;
+
+    background: #6d7abd;
+    color: white;
+
+    border-top: 2px solid #aeb8ee;
+    border-left: 2px solid #aeb8ee;
+    border-right: 2px solid #3f4975;
+    border-bottom: 2px solid #3f4975;
+
+    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.35);
+
+    flex-direction: column;
+
+    font-family: "VT323", monospace;
+
+    z-index: 1100;
+}
+
+
+/* =========================
+   WIN TITLE
+========================= */
+
+.minesweeper-win-title {
+    padding: 6px 8px;
+
+    background: rgba(15, 35, 120, 0.35);
+
+    font-family: "Silkscreen", sans-serif;
+    font-size: 13px;
+}
+
+
+/* =========================
+   WIN MESSAGE
+========================= */
+
+.minesweeper-win-message {
+    flex: 1;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    font-family: "VT323", monospace;
+    font-size: 22px;
+
+    padding: 20px;
+}
+
+
+/* =========================
+   WIN BUTTON
+========================= */
+
+.minesweeper-win-close {
+    display: block;
+
+    margin: 0 auto 18px;
+
+    width: 70px;
+    height: 28px;
+
+    background: #6d7abd;
+    color: white;
+
+    font-family: "VT323", monospace;
+    font-size: 18px;
+
+    border-top: 2px solid #aeb8ee;
+    border-left: 2px solid #aeb8ee;
+    border-right: 2px solid #3f4975;
+    border-bottom: 2px solid #3f4975;
+
+    cursor: pointer;
+}
+
+.minesweeper-win-close:active {
+    transform: translate(2px, 2px);
+}
+
+.minesweeper-icon {
+    display: block;
+    width: 20px;
+    height: 20px;
+    margin: 3px auto;
+    image-rendering: pixelated;
+    object-fit: contain;
+    pointer-events: none;
+    user-select: none;
+}
+
+.minesweeper-cell.flagged {
+    font-size: 0;
+}
+
