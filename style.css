@@ -1232,7 +1232,7 @@ body{
 .mail-list-header,
 .mail-row {
     display: grid;
-    grid-template-columns: 150px 1fr 75px;
+    grid-template-columns: 150px 1fr 100px;
     align-items: center;
     padding: 7px 10px;
     box-sizing: border-box;
@@ -1357,8 +1357,7 @@ body{
 }
 
 .email-body {
-    flex: 1;
-    padding: 15px;
+    padding: 10px;
     font-size: 18px;
     line-height: 1.2;
     white-space: pre-line;
@@ -1392,3 +1391,67 @@ body{
     border-right: 2px solid #aeb8ee;
     border-bottom: 2px solid #aeb8ee;
 }
+
+.bsod-screen {
+    display: none;
+
+    position: fixed;
+    inset: 0;
+
+    z-index: 99999;
+
+    background: #0000aa;
+    color: white;
+
+    font-family: "VT323", monospace;
+
+    cursor: none;
+}
+
+.bsod-content {
+    padding: 45px 55px;
+    box-sizing: border-box;
+}
+
+.bsod-sad {
+    font-family: "VT323", monospace;
+    font-size: 80px;
+    line-height: 1;
+    margin-bottom: 35px;
+}
+
+.bsod-message {
+    max-width: 900px;
+
+    font-family: "VT323", monospace;
+    font-size: 24px;
+    line-height: 1.15;
+
+    white-space: normal;
+}
+
+.spam-email {
+    display: block !important;
+    position: static !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: auto !important;
+    height: auto !important;
+    min-height: 0 !important;
+    line-height: 1.2 !important;
+    font-size: 18px !important;
+}
+
+.spam-link {
+    color: #0000ee;
+    text-decoration: underline;
+    cursor: pointer;
+    font-family: "VT323", monospace;
+    font-size: 18px;
+}
+
+.spam-link:hover {
+    color: #ff0000;
+}
+
+

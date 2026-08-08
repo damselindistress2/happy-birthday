@@ -570,7 +570,6 @@
 
         <div class="mail-main">
 
-            <!-- FOLDERS -->
 
             <div class="mail-folders">
 
@@ -579,7 +578,7 @@
                 </div>
 
                 <div class="mail-folder active">
-                    Inbox (4)
+                    Inbox (<span id="mailCount">0</span>)
                 </div>
 
                 <div class="mail-folder">
@@ -597,8 +596,6 @@
             </div>
 
 
-            <!-- MESSAGE LIST -->
-
             <div class="mail-right">
 
                 <div class="mail-list">
@@ -611,59 +608,10 @@
 
                     </div>
 
-
-                    <div
-                        class="mail-row"
-                        onclick="openMailMessage(0)"
-                        data-search="laurel birthday plans"
-                    >
-
-                        <span>Laurel</span>
-                        <span>RE: Birthday plans</span>
-                        <span>8/11</span>
-
-                    </div>
-
-
-                    <div
-                        class="mail-row"
-                        onclick="openMailMessage(1)"
-                        data-search="you dont forget"
-                    >
-
-                        <span>You</span>
-                        <span>Don't forget...</span>
-                        <span>8/10</span>
-
-                    </div>
-
-
-                    <div
-                        class="mail-row spam"
-                        onclick="openMailMessage(2)"
-                        data-search="mp3 world congratulations won"
-                    >
-
-                        <span>MP3 World</span>
-                        <span>CONGRATULATIONS! YOU'VE WON!</span>
-                        <span>8/09</span>
-
-                    </div>
-
-
-                    <div
-                        class="mail-row spam"
-                        onclick="openMailMessage(3)"
-                        data-search="theo new phone who dis"
-                    >
-
-                        <span>Theo</span>
-                        <span>New Phone who dis</span>
-                        <span>8/09</span>
-
-                    </div>
+                    <div id="mailMessageList"></div>
 
                 </div>
+
 
             </div>
 
@@ -673,7 +621,7 @@
         <div class="mail-footer">
 
             <span>
-                4 messages
+                <span id="mailFooterCount">0</span> messages
             </span>
 
             <button onclick="closeMail()">
@@ -748,6 +696,42 @@
         </button>
 
     </div>
+
+    <div class="bsod-screen" id="bsodScreen">
+
+        <div class="bsod-content">
+
+            <div class="bsod-sad">
+                :(
+            </div>
+
+            <div class="bsod-message">
+
+                Your device ran into a problem and needs to restart.
+
+                <br><br>
+
+                We're just collecting some error info, and then
+                we'll restart for you.
+
+                <br><br>
+
+                0% complete
+
+                <br><br><br>
+
+                Stop code: TOO_OLD_TO_RUN
+
+                <br><br><br>
+
+                Press any key to return to Windows.
+
+            </div>
+
+        </div>
+
+    </div>
+
 
 </div>
 
@@ -937,6 +921,7 @@ function closeMemories() {
     document.getElementById("memoriesWindow").style.display = "none";
 }
 
+
 const mailMessages = [
 
     {
@@ -945,7 +930,9 @@ const mailMessages = [
         date: "11-Aug-1996",
 
         body:
-`Yeah, I'm  coming. I'll bring the seasoning!
+`Yeah, I'm coming.
+
+I'll bring the seasoning!
 
 See you tomorrow!
 
@@ -971,37 +958,93 @@ You`
         sender: "MP3 World",
         subject: "CONGRATULATIONS! YOU'VE WON!",
         date: "09-Aug-1996",
-
+        spam: true,
         body:
 `CONGRATULATIONS!!!
-
 You have been selected to receive a FREE portable MP3 player!
-
-CLICK HERE TO CLAIM YOUR PRIZE!
-`
+CLICK HERE TO CLAIM YOUR PRIZE!`
     },
 
 
     {
         sender: "Theo",
-        subject: "New Phone who dis",
+        subject: "New mail who dis",
         date: "09-Aug-1996",
 
         body:
-`Hello?`
+`Hello?
+
+Let me know if you get this!`
     }
 
 ];
 
-function openMail() {
 
-    document.getElementById("mailWindow").style.display = "flex";
+function buildMailInbox() {
+
+    const list =
+        document.getElementById("mailMessageList");
+
+    list.innerHTML = "";
+
+
+    mailMessages.forEach(function(message, index) {
+
+        const row =
+            document.createElement("div");
+
+        row.className = "mail-row";
+
+
+        if (message.type === "spam") {
+
+            row.classList.add("spam");
+
+        }
+
+
+        row.innerHTML = `
+
+            <span>${message.sender}</span>
+
+            <span>${message.subject}</span>
+
+            <span>${message.date}</span>
+
+        `;
+
+
+        row.dataset.search =
+            message.search;
+
+
+        row.onclick = function() {
+
+            openMailMessage(index);
+
+        };
+
+
+        list.appendChild(row);
+
+    });
+
+
+    document.getElementById("mailCount").textContent =
+        mailMessages.length;
+
+
+    document.getElementById("mailFooterCount").textContent =
+        mailMessages.length;
 
 }
 
+function openMail() { const mailWindow = document.getElementById("mailWindow"); mailWindow.style.display = "flex"; buildMailInbox(); }
+
 function closeMail() {
 
-    document.getElementById("mailWindow").style.display = "none";
+    document.getElementById("mailWindow").style.display =
+        "none";
 
 }
 
@@ -1018,18 +1061,65 @@ function openMailMessage(index) {
     document.getElementById("emailDate").textContent =
         message.date;
 
-    document.getElementById("emailBody").textContent =
-        message.body;
 
-    document.getElementById("emailWindow").style.display = "flex";
+    const body =
+        document.getElementById("emailBody");
+
+
+    body.innerHTML = "";
+
+
+    if (message.spam) {
+
+        body.innerHTML = `
+            <div class="spam-email">CONGRATULATIONS!!!<br>
+                You have been selected to receive a FREE portable MP3 player!<br>
+                <span
+                    class="spam-link"
+                    onclick="triggerBSOD(event)"
+                >CLICK HERE TO CLAIM YOUR PRIZE!</span>
+            </div>
+        `;
+
+    } else {
+
+        body.textContent = message.body;
+
+    }
+
+
+    document.getElementById("emailWindow").style.display =
+        "flex";
 
 }
+
 
 function closeMailMessage() {
 
-    document.getElementById("emailWindow").style.display = "none";
+    document.getElementById("emailWindow").style.display =
+        "none";
 
 }
+
+function showBSOD() {
+    document.getElementById("bsodScreen").style.display = "block";
+}
+
+document.addEventListener("keydown", function () {
+    document.getElementById("bsodScreen").style.display = "none";
+});
+
+function triggerBSOD(event) {
+    event.stopPropagation();
+
+    document.getElementById("emailWindow").style.display = "none";
+    document.getElementById("mailWindow").style.display = "none";
+    document.getElementById("bsodScreen").style.display = "block";
+}
+
+document.addEventListener("keydown", function () {
+    document.getElementById("bsodScreen").style.display = "none";
+});
 
 </script>
 
