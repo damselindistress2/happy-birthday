@@ -925,6 +925,17 @@ function closeMemories() {
 const mailMessages = [
 
     {
+        sender: "Ponlulu",
+        subject: "gratz",
+        date: "12-Aug-1996",
+
+        body:
+`Congratulations on finishing another lap around the sun!
+
+Ponlulu`
+    },
+
+    {
         sender: "Laurel",
         subject: "RE: Birthday plans",
         date: "11-Aug-1996",
@@ -1087,10 +1098,8 @@ function openMailMessage(index) {
 
     }
 
-
     document.getElementById("emailWindow").style.display =
         "flex";
-
 }
 
 
@@ -1116,10 +1125,6 @@ function triggerBSOD(event) {
     document.getElementById("mailWindow").style.display = "none";
     document.getElementById("bsodScreen").style.display = "block";
 }
-
-document.addEventListener("keydown", function () {
-    document.getElementById("bsodScreen").style.display = "none";
-});
 
 </script>
 
