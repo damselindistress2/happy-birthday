@@ -186,6 +186,19 @@ function closeMemories() {
 const mailMessages = [
 
     {
+        sender: "Kiku",
+        subject: "Spoiler: cringe mandatory birthday wishes",
+        date: "12-Aug-1996",
+
+        body:
+`Happy Birthday, Sick! One year older and wiser (hopefully). Jokes aside, you are one of the kindest, most thoughtful and hardworking people I know.
+
+I am so lucky to have gotten to know you, even if it’s through the internet. For an internet friend, you really did put up with all the shit I threw your way. I guess that’s what true friends do. I hope to be there for you, just as you have been there for me all these years.
+
+But for now, I hope you’re eating cake and drinking beer. Love you loads ❤️`
+    },
+
+    {
         sender: "Prinz",
         subject: "Best Wishes",
         date: "12-Aug-1996",
