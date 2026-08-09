@@ -211,7 +211,7 @@ Prinz`
 
     {
         sender: "Paul",
-        subject: "",
+        subject: "Happy Birthday!",
         date: "12-Aug-1996",
 
         body:

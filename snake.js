@@ -146,7 +146,6 @@ function drawSnake() {
         snakeCanvas.height
     );
 
-    // background
     snakeCtx.fillStyle = "#20233d";
 
     snakeCtx.fillRect(
@@ -156,7 +155,6 @@ function drawSnake() {
         snakeCanvas.height
     );
 
-    // subtle grid
     snakeCtx.strokeStyle = "rgba(174,184,238,.08)";
     snakeCtx.lineWidth = 1;
 
@@ -191,10 +189,8 @@ function drawSnake() {
         snakeCtx.stroke();
     }
 
-    // cake
     drawSnakeCake();
 
-    // snake
     snake.forEach((segment, index) => {
 
         snakeCtx.fillStyle =
@@ -216,31 +212,24 @@ function drawSnakeCake() {
     const x = snakeCake.x * snakeTileSize;
     const y = snakeCake.y * snakeTileSize;
 
-    // Pixel-art cake slice
     snakeCtx.fillStyle = "#f7faf8";
 
-    // Cake body
     snakeCtx.fillRect(x + 3, y + 8, 14, 8);
 
-    // Frosting
     snakeCtx.fillStyle = "#aeb8ee";
     snakeCtx.fillRect(x + 3, y + 6, 14, 3);
     snakeCtx.fillRect(x + 5, y + 9, 2, 2);
     snakeCtx.fillRect(x + 11, y + 9, 2, 2);
 
-    // Cake layer
     snakeCtx.fillStyle = "#6D7ABD";
     snakeCtx.fillRect(x + 3, y + 12, 14, 2);
 
-    // Crust
     snakeCtx.fillStyle = "#3f4975";
     snakeCtx.fillRect(x + 3, y + 15, 14, 2);
 
-    // Candle
     snakeCtx.fillStyle = "#f7faf8";
     snakeCtx.fillRect(x + 9, y + 2, 2, 4);
 
-    // Flame
     snakeCtx.fillStyle = "#aeb8ee";
     snakeCtx.fillRect(x + 9, y + 0, 2, 2);
 }

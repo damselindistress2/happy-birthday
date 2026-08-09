@@ -755,7 +755,7 @@
                 <span>92 KB</span>
             </div>
 
-            <div class="file-row game-file">
+            <div class="file-row game-file" onclick="openPong()">
                 <span>pong.exe</span>
                 <span>48 KB</span>
             </div>
@@ -883,6 +883,75 @@
 
     </div>
 
+    <div
+        class="pong-window"
+        id="pongWindow"
+    >
+
+        <div class="pong-title">
+            PONG
+        </div>
+
+        <div class="pong-top">
+
+            <div
+                class="pong-score"
+                id="pongScore"
+            >
+                00  00
+            </div>
+
+        </div>
+
+        <canvas
+            id="pongCanvas"
+            width="540"
+            height="330"
+        ></canvas>
+
+        <button
+            class="pong-reset"
+            type="button"
+            onclick="resetPong()"
+        >
+            RESET
+        </button>
+
+        <button
+            class="pong-close"
+            type="button"
+            onclick="closePong()"
+        >
+            CLOSE
+        </button>
+
+    </div>
+
+    <div
+        class="pong-end-window"
+        id="pongEndWindow"
+    >
+
+        <div class="pong-end-title">
+            PONG
+        </div>
+
+        <div
+            class="pong-end-message"
+            id="pongEndMessage"
+        >
+            YOU WIN!
+        </div>
+
+        <button
+            type="button"
+            onclick="closePongEnd(); resetPong();"
+        >
+            OK
+        </button>
+
+    </div>
+
 </div>
 
 </body>
@@ -892,3 +961,4 @@
 <script src="script.js"></script>
 <script src="snake.js"></script>
 <script src="minesweeper.js"></script>
+<script src="pong.js"></script>

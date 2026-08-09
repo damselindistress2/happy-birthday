@@ -1,7 +1,3 @@
-/* =====================================================
-   MINESWEEPER
-===================================================== */
-
 const MINESWEEPER_SIZE = 9;
 const MINESWEEPER_MINES = 10;
 
@@ -14,11 +10,6 @@ let minesweeperTimer = 0;
 let minesweeperTimerInterval = null;
 
 let minesweeperFlags = 0;
-
-
-/* =====================================================
-   OPEN / CLOSE
-===================================================== */
 
 function openMinesweeper() {
 
@@ -35,7 +26,6 @@ function openMinesweeper() {
     resetMinesweeper();
 }
 
-
 function closeMinesweeper() {
 
     const windowElement =
@@ -47,11 +37,6 @@ function closeMinesweeper() {
 
     stopMinesweeperTimer();
 }
-
-
-/* =====================================================
-   RESET
-===================================================== */
 
 function resetMinesweeper() {
 
@@ -73,15 +58,9 @@ function resetMinesweeper() {
     renderMinesweeperBoard();
 }
 
-
-/* =====================================================
-   CREATE BOARD
-===================================================== */
-
 function createMinesweeperBoard() {
 
     minesweeperBoard = [];
-
 
     for (
         let row = 0;
@@ -99,26 +78,15 @@ function createMinesweeperBoard() {
         ) {
 
             boardRow.push({
-
                 mine: false,
-
                 revealed: false,
-
                 flagged: false,
-
                 number: 0
-
             });
         }
-
-
         minesweeperBoard.push(boardRow);
     }
 
-
-    /* -------------------------------------------------
-       PLACE MINES
-    ------------------------------------------------- */
 
     let minesPlaced = 0;
 
@@ -150,15 +118,8 @@ function createMinesweeperBoard() {
             minesPlaced++;
         }
     }
-
-
     calculateMinesweeperNumbers();
 }
-
-
-/* =====================================================
-   CALCULATE NUMBERS
-===================================================== */
 
 function calculateMinesweeperNumbers() {
 
@@ -182,9 +143,7 @@ function calculateMinesweeperNumbers() {
                 continue;
             }
 
-
             let count = 0;
-
 
             for (let dr = -1; dr <= 1; dr++) {
 
@@ -197,13 +156,11 @@ function calculateMinesweeperNumbers() {
                         continue;
                     }
 
-
                     const neighborRow =
                         row + dr;
 
                     const neighborCol =
                         col + dc;
-
 
                     if (
                         neighborRow < 0 ||
@@ -215,7 +172,6 @@ function calculateMinesweeperNumbers() {
                     ) {
                         continue;
                     }
-
 
                     if (
                         minesweeperBoard
@@ -229,16 +185,10 @@ function calculateMinesweeperNumbers() {
                 }
             }
 
-
             cell.number = count;
         }
     }
 }
-
-
-/* =====================================================
-   RENDER BOARD
-===================================================== */
 
 function renderMinesweeperBoard() {
 
@@ -256,9 +206,7 @@ function renderMinesweeperBoard() {
         return;
     }
 
-
     board.innerHTML = "";
-
 
     for (
         let row = 0;
@@ -287,11 +235,6 @@ function renderMinesweeperBoard() {
             cell.dataset.row = row;
             cell.dataset.col = col;
 
-
-            /* -----------------------------------------
-               REVEALED
-            ----------------------------------------- */
-
             if (cellData.revealed) {
 
                 cell.classList.add(
@@ -319,11 +262,6 @@ function renderMinesweeperBoard() {
                 }
             }
 
-
-            /* -----------------------------------------
-               FLAGGED
-            ----------------------------------------- */
-
             else if (cellData.flagged) {
 
                 cell.classList.add("flagged");
@@ -337,31 +275,15 @@ function renderMinesweeperBoard() {
                 `;
             }
 
-
-            /*
-             * IMPORTANT
-             *
-             * pointerdown gives us event.button:
-             *
-             * 0 = left
-             * 2 = right
-             */
-
             cell.addEventListener(
                 "pointerdown",
                 handleMinesweeperPointer
             );
 
-
             board.appendChild(cell);
         }
     }
 }
-
-
-/* =====================================================
-   CELL INPUT
-===================================================== */
 
 function handleMinesweeperPointer(event) {
 
@@ -379,11 +301,6 @@ function handleMinesweeperPointer(event) {
     const col =
         Number(cell.dataset.col);
 
-
-    /*
-     * LEFT CLICK
-     */
-
     if (event.button === 0) {
 
         revealMinesweeperCell(
@@ -393,11 +310,6 @@ function handleMinesweeperPointer(event) {
 
         return;
     }
-
-
-    /*
-     * RIGHT CLICK
-     */
 
     if (event.button === 2) {
 
@@ -410,11 +322,6 @@ function handleMinesweeperPointer(event) {
     }
 }
 
-
-/* =====================================================
-   PREVENT RIGHT-CLICK MENU
-===================================================== */
-
 function setupMinesweeperContextMenu() {
 
     const board =
@@ -422,11 +329,9 @@ function setupMinesweeperContextMenu() {
             "minesweeperBoard"
         );
 
-
     if (!board) {
         return;
     }
-
 
     board.addEventListener(
         "contextmenu",
@@ -439,11 +344,6 @@ function setupMinesweeperContextMenu() {
     );
 }
 
-
-/* =====================================================
-   REVEAL CELL
-===================================================== */
-
 function revealMinesweeperCell(
     row,
     col
@@ -453,15 +353,8 @@ function revealMinesweeperCell(
         return;
     }
 
-
     const cell =
         minesweeperBoard[row][col];
-
-
-    /*
-     * Don't reveal revealed cells
-     * or flagged cells.
-     */
 
     if (
         cell.revealed ||
@@ -470,22 +363,12 @@ function revealMinesweeperCell(
         return;
     }
 
-
-    /*
-     * Start timer.
-     */
-
     if (!minesweeperStarted) {
 
         minesweeperStarted = true;
 
         startMinesweeperTimer();
     }
-
-
-    /*
-     * MINE
-     */
 
     if (cell.mine) {
 
@@ -502,36 +385,19 @@ function revealMinesweeperCell(
         return;
     }
 
-
-    /*
-     * SAFE CELL
-     */
-
     revealMinesweeperArea(
         row,
         col
     );
 
-
     renderMinesweeperBoard();
-
-
     checkMinesweeperWin();
 }
-
-
-/* =====================================================
-   REVEAL EMPTY AREA
-===================================================== */
 
 function revealMinesweeperArea(
     row,
     col
 ) {
-
-    /*
-     * Outside board
-     */
 
     if (
         row < 0 ||
@@ -541,15 +407,8 @@ function revealMinesweeperArea(
     ) {
         return;
     }
-
-
     const cell =
         minesweeperBoard[row][col];
-
-
-    /*
-     * Stop recursion.
-     */
 
     if (
         cell.revealed ||
@@ -558,23 +417,11 @@ function revealMinesweeperArea(
     ) {
         return;
     }
-
-
     cell.revealed = true;
-
-
-    /*
-     * Numbered cells don't expand.
-     */
 
     if (cell.number !== 0) {
         return;
     }
-
-
-    /*
-     * Expand to neighbours.
-     */
 
     for (let dr = -1; dr <= 1; dr++) {
 
@@ -587,7 +434,6 @@ function revealMinesweeperArea(
                 continue;
             }
 
-
             revealMinesweeperArea(
                 row + dr,
                 col + dc
@@ -595,11 +441,6 @@ function revealMinesweeperArea(
         }
     }
 }
-
-
-/* =====================================================
-   FLAG
-===================================================== */
 
 function toggleMinesweeperFlag(
     row,
@@ -610,23 +451,12 @@ function toggleMinesweeperFlag(
         return;
     }
 
-
     const cell =
         minesweeperBoard[row][col];
-
-
-    /*
-     * Can't flag revealed cells.
-     */
 
     if (cell.revealed) {
         return;
     }
-
-
-    /*
-     * Don't allow more than 10 flags.
-     */
 
     if (
         !cell.flagged &&
@@ -636,33 +466,20 @@ function toggleMinesweeperFlag(
         return;
     }
 
-
     cell.flagged =
         !cell.flagged;
 
-
     if (cell.flagged) {
-
         minesweeperFlags++;
-
     }
 
     else {
-
         minesweeperFlags--;
     }
 
-
     updateMinesweeperCounter();
-
-
     renderMinesweeperBoard();
 }
-
-
-/* =====================================================
-   REVEAL ALL MINES
-===================================================== */
 
 function revealAllMines() {
 
@@ -688,11 +505,6 @@ function revealAllMines() {
         }
     }
 }
-
-
-/* =====================================================
-   CHECK WIN
-===================================================== */
 
 function checkMinesweeperWin() {
 
@@ -721,30 +533,14 @@ function checkMinesweeperWin() {
             }
         }
     }
-
-
-    /*
-     * Player has revealed
-     * every safe cell.
-     */
-
     minesweeperGameOver = true;
-
     stopMinesweeperTimer();
-
     showMinesweeperWin();
 }
-
-
-/* =====================================================
-   TIMER
-===================================================== */
 
 function startMinesweeperTimer() {
 
     stopMinesweeperTimer();
-
-
     minesweeperTimerInterval =
         setInterval(
             function() {
@@ -757,7 +553,6 @@ function startMinesweeperTimer() {
             1000
         );
 }
-
 
 function stopMinesweeperTimer() {
 
@@ -773,7 +568,6 @@ function stopMinesweeperTimer() {
     }
 }
 
-
 function updateMinesweeperTimer() {
 
     const timer =
@@ -781,21 +575,14 @@ function updateMinesweeperTimer() {
             "mineTimer"
         );
 
-
     if (!timer) {
         return;
     }
-
 
     timer.textContent =
         String(minesweeperTimer)
             .padStart(3, "0");
 }
-
-
-/* =====================================================
-   FLAG COUNTER
-===================================================== */
 
 function updateMinesweeperCounter() {
 
@@ -804,11 +591,9 @@ function updateMinesweeperCounter() {
             "mineCounter"
         );
 
-
     if (!counter) {
         return;
     }
-
 
     const remaining =
         MINESWEEPER_MINES -
@@ -820,18 +605,12 @@ function updateMinesweeperCounter() {
             .padStart(3, "0");
 }
 
-
-/* =====================================================
-   WIN WINDOW
-===================================================== */
-
 function showMinesweeperWin() {
 
     const winWindow =
         document.getElementById(
             "minesweeperWinWindow"
         );
-
 
     if (winWindow) {
 
@@ -840,14 +619,12 @@ function showMinesweeperWin() {
     }
 }
 
-
 function hideMinesweeperWin() {
 
     const winWindow =
         document.getElementById(
             "minesweeperWinWindow"
         );
-
 
     if (winWindow) {
 
@@ -856,16 +633,10 @@ function hideMinesweeperWin() {
     }
 }
 
-
 function closeMinesweeperWin() {
 
     hideMinesweeperWin();
 }
-
-
-/* =====================================================
-   BUTTON SETUP
-===================================================== */
 
 function setupMinesweeperButtons() {
 
@@ -874,18 +645,15 @@ function setupMinesweeperButtons() {
             "minesweeperReset"
         );
 
-
     const closeButton =
         document.getElementById(
             "minesweeperClose"
         );
 
-
     const winCloseButton =
         document.getElementById(
             "minesweeperWinClose"
         );
-
 
     if (resetButton) {
 
@@ -895,7 +663,6 @@ function setupMinesweeperButtons() {
         );
     }
 
-
     if (closeButton) {
 
         closeButton.addEventListener(
@@ -903,7 +670,6 @@ function setupMinesweeperButtons() {
             closeMinesweeper
         );
     }
-
 
     if (winCloseButton) {
 
@@ -913,11 +679,6 @@ function setupMinesweeperButtons() {
         );
     }
 }
-
-
-/* =====================================================
-   INITIALISE
-===================================================== */
 
 document.addEventListener(
     "DOMContentLoaded",
