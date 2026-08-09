@@ -185,7 +185,40 @@ function closeMemories() {
 
 const mailMessages = [
 
-        {
+    {
+        sender: "Prinz",
+        subject: "Best Wishes",
+        date: "12-Aug-1996",
+
+        body:
+`Dear Timmy, happy birthday!
+
+I hope you have a wonderful day to enjoy, and will recieve a lot of good things in the coming year!
+
+You deserve all the best!
+
+Prinz`
+    },
+
+    {
+        sender: "Jesse",
+        subject: "Amazingly Mellifluous",
+        date: "12-Aug-1996",
+
+        body:
+`Lyrical my most treasured bosom friend! You’re the low-key constant in my life that’s become an irrefutable necessity. I know, I know, I should be over all the butterflies. You’re the me I want to be. Happy Birthday!`
+    },
+
+    {
+        sender: "Jason",
+        subject: "You need to",
+        date: "12-Aug-1996",
+
+        body:
+`Hello sickermore. Have a great birthday. You are now older and slower so it's time for you to KEEP UP!`
+    },
+
+    {
         sender: "Evee",
         subject: "🚨⚠️ FWD: FWD: FWD: RE: ⚠️🚨",
         date: "12-Aug-1996",
