@@ -185,6 +185,31 @@ function closeMemories() {
 
 const mailMessages = [
 
+        {
+        sender: "Evee",
+        subject: "🚨⚠️ FWD: FWD: FWD: RE: ⚠️🚨",
+        date: "12-Aug-1996",
+
+        body:
+`You 🛑 THOUGHT 🤔 today 📅 was just 🤷 a NORMAL 🎂 birthday... !!!?? 🎁🎁 You 👈 were WRONG. ❌🚫💀💥
+
+By 👀 OPENING 📂 this email, 📧 you 🫵 have OFFICIALLY 📜 triggered ⚡ the Cursed Cake 🎂 of Eternal ⏳ Inconvenience !!! 🎂👹🔥💥🚨
+
+If you 👉 do NOT 🙅‍♂️ forward ➡️ this EXACT 💯 email 📧 to 7 people 👥👥 within ⏱️ the next ⏩ 66 minutes ⏱️⏳‼️, the following ⬇️ CURSES 🪬 will be UNLEASHED 🐺 upon 👤 you at MIDNIGHT... !!! 🕛🌙🔮👻💀
+
+Warm Pillows: 🛏️ BOTH 👋 sides of your pillow 💤 will STAY 🛑 permanently WARM 🥵 !!! 🥵🛏️💤🔥🌡️
+
+Driver Loop: 💻 Your TECH 🖥️ devices 📱 will TRAP 🪤 you in ENDLESS 🔄 system restarts ⏳ !!!?? 💻🔄🚨👾💥🤖
+
+Spoiler Alert: 📚 STRANGERS 👥 will SHOUT 🗣️ the endings 🏁 of BOOKS 📖 on your shelf 👀 !!! 📚🗣️❌📖😱🤬
+
+The Blue Screen: 🧠 Your BRAIN 🧠 will experience 💥 a 404 🚫 ERROR ⚠️ every time ⏰ you TRY 🙋‍♂️ to remember 🤔 why you WALKED 🚶‍♂️ into a room 🚪 !!! 🧠🌀🥶💻⚡🛸
+
+DO NOT 🚫 ATTEMPT 🛑 TO DELETE 🗑️ THIS PARTITION... !!! 🚫💾🚫 The Basement 🏚️ Leviathan 👹 is ACTIVELY 📡 pinging ⚡ your IP 🌐 address !!! 👁️🖥️👾👹🖲️🎯
+
+Happy 🎉 LEVEL UP 🎮 Day... !!!?? 🎈🎈🎮👾🎂🥳🧁✨`
+    },
+
     {
         sender: "celacım",
         subject: "birthday gl1tches",
