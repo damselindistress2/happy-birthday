@@ -2,8 +2,10 @@ const PONG_WIN_SCORE = 5;
 
 let pongCanvas = null;
 let pongContext = null;
+
 let pongAnimationFrame = null;
 let pongRunning = false;
+let pongGameActive = false;
 
 let pongPlayerScore = 0;
 let pongPcScore = 0;
@@ -13,6 +15,11 @@ const pongKeys = {
     down: false
 };
 
+
+/* =========================
+   BALL
+========================= */
+
 const pongBall = {
     x: 0,
     y: 0,
@@ -21,55 +28,97 @@ const pongBall = {
     speedY: 2
 };
 
+
+/* =========================
+   PLAYER
+========================= */
+
 const pongPlayer = {
     x: 12,
     y: 0,
-    width: 6,
-    height: 48,
-    speed: 5
+    width: 8,
+    height: 66,
+    speed: 6
 };
+
+
+/* =========================
+   PC
+========================= */
 
 const pongPc = {
     x: 0,
     y: 0,
-    width: 6,
-    height: 48,
-    speed: 3.5
+    width: 8,
+    height: 66,
+    speed: 4
 };
 
+
+/* =========================
+   PRESENT
+========================= */
+
 const pongPresent = new Image();
+
 pongPresent.src = "present.png";
+
+
+/* =========================
+   OPEN PONG
+========================= */
 
 function openPong() {
 
-    const windowElement =
+    stopPong();
+
+    pongGameActive = false;
+
+    const gameWindow =
         document.getElementById("pongWindow");
 
-    if (!windowElement) {
-        return;
+    const startWindow =
+        document.getElementById("pongStartWindow");
+
+    const endWindow =
+        document.getElementById("pongEndWindow");
+
+
+    if (gameWindow) {
+        gameWindow.style.display = "none";
     }
 
-    windowElement.style.display = "flex";
+    if (endWindow) {
+        endWindow.style.display = "none";
+    }
 
-    setupPong();
+    if (startWindow) {
+        startWindow.style.display = "flex";
+    }
 }
 
 
-function closePong() {
+/* =========================
+   START GAME
+========================= */
 
-    const windowElement =
+function startPongGame() {
+
+    stopPong();
+
+    const startWindow =
+        document.getElementById("pongStartWindow");
+
+    const gameWindow =
         document.getElementById("pongWindow");
 
-    if (windowElement) {
-        windowElement.style.display = "none";
+    if (startWindow) {
+        startWindow.style.display = "none";
     }
 
-    stopPong();
-}
-
-function setupPong() {
-
-    stopPong();
+    if (gameWindow) {
+        gameWindow.style.display = "flex";
+    }
 
     pongCanvas =
         document.getElementById("pongCanvas");
@@ -81,6 +130,7 @@ function setupPong() {
     pongContext =
         pongCanvas.getContext("2d");
 
+
     pongPlayerScore = 0;
     pongPcScore = 0;
 
@@ -91,31 +141,85 @@ function setupPong() {
         pongPc.width -
         12;
 
+
     updatePongScore();
 
     resetPongRound();
 
+    pongGameActive = true;
     pongRunning = true;
 
     startPong();
 }
 
+
+/* =========================
+   CLOSE PONG
+========================= */
+
+function closePong() {
+
+    /*
+     * This is important.
+     * Closing Pong ALWAYS kills
+     * the animation loop.
+     */
+
+    pongGameActive = false;
+
+    stopPong();
+
+    const gameWindow =
+        document.getElementById("pongWindow");
+
+    const startWindow =
+        document.getElementById("pongStartWindow");
+
+    const endWindow =
+        document.getElementById("pongEndWindow");
+
+
+    if (gameWindow) {
+        gameWindow.style.display = "none";
+    }
+
+    if (startWindow) {
+        startWindow.style.display = "none";
+    }
+
+    if (endWindow) {
+        endWindow.style.display = "none";
+    }
+}
+
+
+/* =========================
+   START LOOP
+========================= */
+
 function startPong() {
 
-    if (!pongCanvas || !pongContext) {
+    if (!pongGameActive) {
         return;
     }
 
     if (pongAnimationFrame !== null) {
+
         cancelAnimationFrame(
             pongAnimationFrame
         );
+
+        pongAnimationFrame = null;
     }
 
     pongAnimationFrame =
         requestAnimationFrame(pongLoop);
 }
 
+
+/* =========================
+   STOP LOOP
+========================= */
 
 function stopPong() {
 
@@ -134,32 +238,44 @@ function stopPong() {
     pongKeys.down = false;
 }
 
-function resetPong() {
 
-    if (!pongCanvas) {
+/* =========================
+   GAME LOOP
+========================= */
+
+function pongLoop() {
+
+    /*
+     * Double safety:
+     * never update if game isn't active.
+     */
+
+    if (
+        !pongRunning ||
+        !pongGameActive
+    ) {
+
+        pongAnimationFrame = null;
+
         return;
     }
 
-    stopPong();
 
-    pongPlayerScore = 0;
-    pongPcScore = 0;
+    updatePong();
 
-    pongPlayer.x = 12;
+    drawPong();
 
-    pongPc.x =
-        pongCanvas.width -
-        pongPc.width -
-        12;
 
-    updatePongScore();
-
-    resetPongRound();
-
-    pongRunning = true;
-
-    startPong();
+    pongAnimationFrame =
+        requestAnimationFrame(
+            pongLoop
+        );
 }
+
+
+/* =========================
+   RESET ROUND
+========================= */
 
 function resetPongRound() {
 
@@ -167,29 +283,36 @@ function resetPongRound() {
         return;
     }
 
+
     pongPlayer.y =
         (pongCanvas.height -
             pongPlayer.height) / 2;
+
 
     pongPc.y =
         (pongCanvas.height -
             pongPc.height) / 2;
 
+
     pongBall.x =
         (pongCanvas.width -
             pongBall.size) / 2;
 
+
     pongBall.y =
         (pongCanvas.height -
             pongBall.size) / 2;
+
 
     const direction =
         Math.random() < 0.5
             ? -1
             : 1;
 
+
     pongBall.speedX =
         3 * direction;
+
 
     pongBall.speedY =
         (Math.random() * 2 + 1) *
@@ -200,41 +323,42 @@ function resetPongRound() {
         );
 }
 
-function pongLoop() {
 
-    if (!pongRunning) {
-        pongAnimationFrame = null;
-        return;
-    }
-
-    updatePong();
-
-    drawPong();
-
-    pongAnimationFrame =
-        requestAnimationFrame(pongLoop);
-}
+/* =========================
+   UPDATE
+========================= */
 
 function updatePong() {
 
     updatePongPlayer();
+
     updatePongPc();
+
     updatePongBall();
 }
+
+
+/* =========================
+   PLAYER
+========================= */
 
 function updatePongPlayer() {
 
     if (pongKeys.up) {
-        pongPlayer.y -= pongPlayer.speed;
+        pongPlayer.y -=
+            pongPlayer.speed;
     }
 
     if (pongKeys.down) {
-        pongPlayer.y += pongPlayer.speed;
+        pongPlayer.y +=
+            pongPlayer.speed;
     }
+
 
     if (pongPlayer.y < 0) {
         pongPlayer.y = 0;
     }
+
 
     if (
         pongPlayer.y +
@@ -248,31 +372,47 @@ function updatePongPlayer() {
     }
 }
 
+
+/* =========================
+   PC AI
+========================= */
+
 function updatePongPc() {
 
     const target =
         pongBall.y +
         pongBall.size / 2;
 
+
     const paddleCenter =
         pongPc.y +
         pongPc.height / 2;
 
+
     const difference =
-        target - paddleCenter;
+        target -
+        paddleCenter;
+
 
     if (Math.abs(difference) > 5) {
 
         if (difference > 0) {
-            pongPc.y += pongPc.speed;
+
+            pongPc.y +=
+                pongPc.speed;
+
         } else {
-            pongPc.y -= pongPc.speed;
+
+            pongPc.y -=
+                pongPc.speed;
         }
     }
+
 
     if (pongPc.y < 0) {
         pongPc.y = 0;
     }
+
 
     if (
         pongPc.y +
@@ -286,36 +426,64 @@ function updatePongPc() {
     }
 }
 
+
+/* =========================
+   BALL
+========================= */
+
 function updatePongBall() {
 
-    pongBall.x += pongBall.speedX;
-    pongBall.y += pongBall.speedY;
+    pongBall.x +=
+        pongBall.speedX;
+
+    pongBall.y +=
+        pongBall.speedY;
+
+
+    /*
+     * TOP
+     */
 
     if (pongBall.y <= 0) {
 
         pongBall.y = 0;
+
         pongBall.speedY *= -1;
     }
 
+
+    /*
+     * BOTTOM
+     */
+
     if (
-        pongBall.y + pongBall.size >=
+        pongBall.y +
+        pongBall.size >=
         pongCanvas.height
     ) {
 
         pongBall.y =
-            pongCanvas.height - pongBall.size;
+            pongCanvas.height -
+            pongBall.size;
 
         pongBall.speedY *= -1;
     }
+
+
+    /*
+     * PLAYER
+     */
 
     if (
         pongBall.speedX < 0 &&
         pongBall.x <=
             pongPlayer.x +
             pongPlayer.width &&
-        pongBall.x + pongBall.size >=
+        pongBall.x +
+            pongBall.size >=
             pongPlayer.x &&
-        pongBall.y + pongBall.size >=
+        pongBall.y +
+            pongBall.size >=
             pongPlayer.y &&
         pongBall.y <=
             pongPlayer.y +
@@ -327,19 +495,30 @@ function updatePongBall() {
             pongPlayer.width;
 
         pongBall.speedX =
-            Math.abs(pongBall.speedX) + 0.15;
+            Math.abs(
+                pongBall.speedX
+            ) + 0.15;
 
-        adjustPongBounce(pongPlayer);
+        adjustPongBounce(
+            pongPlayer
+        );
     }
+
+
+    /*
+     * PC
+     */
 
     if (
         pongBall.speedX > 0 &&
-        pongBall.x + pongBall.size >=
+        pongBall.x +
+            pongBall.size >=
             pongPc.x &&
         pongBall.x <=
             pongPc.x +
             pongPc.width &&
-        pongBall.y + pongBall.size >=
+        pongBall.y +
+            pongBall.size >=
             pongPc.y &&
         pongBall.y <=
             pongPc.y +
@@ -351,10 +530,19 @@ function updatePongBall() {
             pongBall.size;
 
         pongBall.speedX =
-            -Math.abs(pongBall.speedX) - 0.15;
+            -Math.abs(
+                pongBall.speedX
+            ) - 0.15;
 
-        adjustPongBounce(pongPc);
+        adjustPongBounce(
+            pongPc
+        );
     }
+
+
+    /*
+     * PLAYER MISSED
+     */
 
     if (
         pongBall.x +
@@ -365,14 +553,27 @@ function updatePongBall() {
 
         updatePongScore();
 
-        checkPongWinner();
+        if (
+            pongPcScore >=
+            PONG_WIN_SCORE
+        ) {
 
-        if (pongRunning) {
-            resetPongRound();
+            endPongGame(
+                "THE PC WINS!"
+            );
+
+            return;
         }
+
+        resetPongRound();
 
         return;
     }
+
+
+    /*
+     * PC MISSED
+     */
 
     if (
         pongBall.x >
@@ -383,15 +584,26 @@ function updatePongBall() {
 
         updatePongScore();
 
-        checkPongWinner();
+        if (
+            pongPlayerScore >=
+            PONG_WIN_SCORE
+        ) {
 
-        if (pongRunning) {
-            resetPongRound();
+            endPongGame(
+                "YOU WIN!"
+            );
+
+            return;
         }
 
-        return;
+        resetPongRound();
     }
 }
+
+
+/* =========================
+   BOUNCE
+========================= */
 
 function adjustPongBounce(paddle) {
 
@@ -399,25 +611,36 @@ function adjustPongBounce(paddle) {
         paddle.y +
         paddle.height / 2;
 
+
     const ballCenter =
         pongBall.y +
         pongBall.size / 2;
+
 
     const difference =
         ballCenter -
         paddleCenter;
 
+
     const normalized =
         difference /
         (paddle.height / 2);
+
 
     pongBall.speedY =
         normalized * 4;
 }
 
+
+/* =========================
+   DRAW
+========================= */
+
 function drawPong() {
 
-    const ctx = pongContext;
+    const ctx =
+        pongContext;
+
 
     ctx.clearRect(
         0,
@@ -426,7 +649,13 @@ function drawPong() {
         pongCanvas.height
     );
 
-    ctx.fillStyle = "#20233d";
+
+    /*
+     * BACKGROUND
+     */
+
+    ctx.fillStyle =
+        "#20233d";
 
     ctx.fillRect(
         0,
@@ -435,7 +664,14 @@ function drawPong() {
         pongCanvas.height
     );
 
-    ctx.fillStyle = "#59648f";
+
+    /*
+     * CENTER LINE
+     */
+
+    ctx.fillStyle =
+        "#59648f";
+
 
     for (
         let y = 0;
@@ -451,7 +687,14 @@ function drawPong() {
         );
     }
 
-    ctx.fillStyle = "#aeb8ee";
+
+    /*
+     * PADDLES
+     */
+
+    ctx.fillStyle =
+        "#aeb8ee";
+
 
     ctx.fillRect(
         pongPlayer.x,
@@ -460,12 +703,18 @@ function drawPong() {
         pongPlayer.height
     );
 
+
     ctx.fillRect(
         pongPc.x,
         pongPc.y,
         pongPc.width,
         pongPc.height
     );
+
+
+    /*
+     * PRESENT
+     */
 
     ctx.save();
 
@@ -480,12 +729,14 @@ function drawPong() {
 
     ctx.clip();
 
+
     if (
         pongPresent.complete &&
         pongPresent.naturalWidth > 0
     ) {
 
-        ctx.imageSmoothingEnabled = false;
+        ctx.imageSmoothingEnabled =
+            false;
 
         ctx.drawImage(
             pongPresent,
@@ -497,7 +748,8 @@ function drawPong() {
 
     } else {
 
-        ctx.fillStyle = "#d8a0b8";
+        ctx.fillStyle =
+            "#d8a0b8";
 
         ctx.fillRect(
             Math.round(pongBall.x),
@@ -507,49 +759,43 @@ function drawPong() {
         );
     }
 
+
     ctx.restore();
 }
+
+
+/* =========================
+   SCORE
+========================= */
 
 function updatePongScore() {
 
     const score =
-        document.getElementById("pongScore");
+        document.getElementById(
+            "pongScore"
+        );
 
     if (!score) {
         return;
     }
 
+
     score.textContent =
         `${String(pongPlayerScore).padStart(2, "0")}  ${String(pongPcScore).padStart(2, "0")}`;
 }
 
-function checkPongWinner() {
 
-    if (
-        pongPlayerScore >=
-        PONG_WIN_SCORE
-    ) {
+/* =========================
+   END GAME
+========================= */
 
-        pongRunning = false;
+function endPongGame(message) {
 
-        showPongEndWindow(
-            "YOU WIN!"
-        );
+    pongGameActive = false;
 
-        return;
-    }
+    stopPong();
 
-    if (
-        pongPcScore >=
-        PONG_WIN_SCORE
-    ) {
-
-        pongRunning = false;
-
-        showPongEndWindow(
-            "THE PC WINS!"
-        );
-    }
+    showPongEndWindow(message);
 }
 
 
@@ -565,17 +811,25 @@ function showPongEndWindow(message) {
             "pongEndMessage"
         );
 
+
     if (messageElement) {
+
         messageElement.textContent =
             message;
     }
 
+
     if (windowElement) {
+
         windowElement.style.display =
             "flex";
     }
 }
 
+
+/* =========================
+   CLOSE END WINDOW
+========================= */
 
 function closePongEnd() {
 
@@ -584,11 +838,18 @@ function closePongEnd() {
             "pongEndWindow"
         );
 
+
     if (windowElement) {
+
         windowElement.style.display =
             "none";
     }
 }
+
+
+/* =========================
+   KEYBOARD
+========================= */
 
 document.addEventListener(
     "keydown",
@@ -603,6 +864,7 @@ document.addEventListener(
 
             event.preventDefault();
         }
+
 
         if (
             event.key === "s" ||
@@ -628,6 +890,7 @@ document.addEventListener(
 
             pongKeys.up = false;
         }
+
 
         if (
             event.key === "s" ||

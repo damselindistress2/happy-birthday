@@ -945,11 +945,45 @@
 
         <button
             type="button"
-            onclick="closePongEnd(); resetPong();"
+            onclick="closePongEnd(); closePong();"
         >
             OK
         </button>
 
+    </div>
+
+    <div
+        class="pong-start-window"
+        id="pongStartWindow"
+    >
+        <div class="pong-start-title">
+            PONG
+        </div>
+
+        <div class="pong-start-message">
+            <div>HOW TO PLAY</div>
+            <br>
+            <div>W — MOVE UP</div>
+            <div>S — MOVE DOWN</div>
+            <br>
+            <div>FIRST TO 5 WINS</div>
+        </div>
+
+        <button
+            class="pong-start-button"
+            type="button"
+            onclick="startPongGame()"
+        >
+            START
+        </button>
+
+        <button
+            class="pong-start-close"
+            type="button"
+            onclick="closePong()"
+        >
+            CLOSE
+        </button>
     </div>
 
 </div>
