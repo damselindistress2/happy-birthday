@@ -186,6 +186,15 @@ function closeMemories() {
 const mailMessages = [
 
     {
+        sender: "Aza",
+        subject: "Raspberry Ice-cream on a beach",
+        date: "12-Aug-1996",
+
+        body:
+`Happy birthday lyrical, shall we meet on the Milky Way? 😉`
+    },
+
+    {
         sender: "Kiku",
         subject: "Spoiler: cringe mandatory birthday wishes",
         date: "12-Aug-1996",
