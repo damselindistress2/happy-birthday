@@ -184,7 +184,17 @@ function closeMemories() {
 }
 
 const mailMessages = [
-
+    {
+        sender: "Snapchat Bestie",
+        subject: "birthday wishes",
+        date: "12-Aug-1996",
+        body:
+`happy birthday to my snapchat bestie. I wish you good health, a calm mind & a full heart. 
+        
+xoxo,
+Snapchat Bestie`
+    },
+    
     {
         sender: "Aza",
         subject: "Raspberry Ice-cream on a beach",
